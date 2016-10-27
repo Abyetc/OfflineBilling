@@ -1,0 +1,75 @@
+package com.process
+
+import com.data.*;
+import com.charging.*;
+
+
+// 设置月租费用
+rule "monthly rent"
+	when	
+		userData: UserData(tariffPackage.packageName == "lexiang4G59");
+	then
+		userData.getTariffPackage().setTOTAL_RENTAL_AMT(5900);		// 5900分代表59元
+end
+
+
+// 套餐外 国内流量的收费
+rule "data traffic"
+	when
+		userData: UserData(tariffPackage.packageName == "lexiang4G59", dataTraffic.INTERNET_TOT_BYTES > 500 * 1024 * 1024);		// 判断是否超过免费流量总额
+	then
+		TariffPackage tariffPackage = userData.getTariffPackage();		// 获取表示用户各项金额的数据
+		DataTrafficAMT dataTrafficAMT = tariffPackage.getDATATRAFFIC_AMT();	// 流量计费实例
+		//System.out.println(userData.getDataTraffic().getINTERNET_TOT_BYTES());
+		
+		int exceedTraffic = userData.getDataTraffic().getINTERNET_TOT_BYTES() - 500 * 1024 * 1024;	// 获取超过套餐部分流量，KB
+		int countMB = exceedTraffic / (1024*1024);		// 转化为MB
+		if(exceedTraffic % (1024*1024) != 0){			// 不足1MB按照1MB计算
+			countMB += 1;
+		}
+		//System.out.println(countMB);
+		int exceedAMT = 30 * 100 * (countMB / 500);	// 超过部分总金额
+		if((countMB % 500) > 100){
+			exceedAMT += 30 * 100;
+		}else{
+			exceedAMT += (countMB % 500) * 30;
+		}
+		dataTrafficAMT.setI4G_MY_AMT_IN(exceedAMT);				// 重新设置流量总额
+end
+
+
+// 国内主叫超出部分计费
+rule "inner calling"
+	when
+		userData: UserData(tariffPackage.packageName == "lexiang4G59", amount : calling.VOICE_CALLING_BILLED_DUR > 100);
+	then
+		CallingAMT callingAMT = userData.getTariffPackage().getCALLING_AMT();
+		int exceedCalling = amount - 100;
+		int exceedAMT = exceedCalling * 15;		// 0.15元 每分钟，也就是15分
+		callingAMT.setDDD_CAING_AMT(exceedAMT);
+end
+
+// 短信业务收费
+rule "inner message"
+	when
+		userData: UserData(tariffPackage.packageName == "lexiang4G59", amount : message.INNER_SEND_SMS_TIMES > 0);
+	then
+		Message message = userData.getMessage();
+		MessageAMT messageAMT = userData.getTariffPackage().getMESSAGE_AMT();
+		int exceedAMT = amount * 10;		// 每条短信0.1元
+		messageAMT.setINNER_SEND_SMS_AMT(exceedAMT);
+end
+
+
+// 增值业务总金额
+rule "VALUE_ADDED_AMT"
+	when
+		userData: UserData(tariffPackage.packageName == "lexiang4G59");
+	then
+		int CAILING_AMT = userData.getAddition().getCAILING_AMT();
+		int SP_SMS_AMT = userData.getAddition().getSP_SMS_AMT();
+		userData.getTariffPackage().getADDITION_AMT().setCAILING_AMT(CAILING_AMT);
+		userData.getTariffPackage().getADDITION_AMT().setSP_SMS_AMT(SP_SMS_AMT);
+end
+
+
