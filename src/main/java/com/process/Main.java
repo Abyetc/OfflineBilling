@@ -19,12 +19,6 @@ public class Main {
     	    KieContainer kContainer = ks.getKieClasspathContainer();
         	KieSession kSession = kContainer.newKieSession("ksession-rules");
 
-            // go !
-//        	DroolsTest droolsTest = new DroolsTest();
-//            Message message = droolsTest.new Message();
-//            message.setMessage("Hello World");
-//            message.setStatus(Message.HELLO);
-            
         	List<List<Integer>> data = XlsUtils.getUserData();
         	List<List<String>> info = XlsUtils.getUserInfo();
         	
