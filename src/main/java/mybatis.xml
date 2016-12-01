@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration
+  PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+	<environments default="development">
+		<environment id="development">
+			<!-- 事务管理类型，JDBC表示直接使用JDBC的提交和回滚设置，依赖于数据源得到的连接来管理事务 -->
+			<transactionManager type="JDBC" />
+			<!-- 数据库连接池POOLED表示使用数据库连接池 -->
+			<dataSource type="POOLED">
+				<property name="driver" value="com.mysql.jdbc.Driver" />
+				<property name="url" value="jdbc:mysql://localhost:3306/offlineBilling" />
+				<property name="username" value="root" />
+				<property name="password" value="abyjun" />
+			</dataSource>
+		</environment>
+	</environments>
+	
+	<mappers>
+		<!-- SQL代码和映射信息配置文件 -->
+		<mapper resource="com/aby/record/dao/RecordMapper.xml" />
+	</mappers>
+</configuration>

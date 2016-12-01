@@ -1,0 +1,2198 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.aby.record.dao.RecordMapper">
+  <resultMap id="BaseResultMap" type="com.aby.record.model.Record">
+    <id column="ID" jdbcType="INTEGER" property="id" />
+    <result column="DTA_DATE" jdbcType="VARCHAR" property="dtaDate" />
+    <result column="PROD_SPEC_ID" jdbcType="INTEGER" property="prodSpecId" />
+    <result column="INTEGRATION_CD" jdbcType="VARCHAR" property="integrationCd" />
+    <result column="USER_ID" jdbcType="VARCHAR" property="userId" />
+    <result column="VALUE_ADDED_AMT" jdbcType="INTEGER" property="valueAddedAmt" />
+    <result column="CAILING_AMT" jdbcType="INTEGER" property="cailingAmt" />
+    <result column="CAILING_AMOUNT" jdbcType="INTEGER" property="cailingAmount" />
+    <result column="SP_SMS_AMT" jdbcType="INTEGER" property="spSmsAmt" />
+    <result column="SP_SMS_AMOUNT" jdbcType="INTEGER" property="spSmsAmount" />
+    <result column="INTERNET_AMT" jdbcType="INTEGER" property="internetAmt" />
+    <result column="INTERNET_TOT_BYTES" jdbcType="BIGINT" property="internetTotBytes" />
+    <result column="INTERNET_DUR" jdbcType="INTEGER" property="internetDur" />
+    <result column="INTERNET_ONLINE_TIMES" jdbcType="INTEGER" property="internetOnlineTimes" />
+    <result column="INTERNET_BILLED_DUR" jdbcType="INTEGER" property="internetBilledDur" />
+    <result column="I1X_AMT" jdbcType="INTEGER" property="i1xAmt" />
+    <result column="I1X_TOT_BYTES" jdbcType="BIGINT" property="i1xTotBytes" />
+    <result column="I1X_DUR" jdbcType="INTEGER" property="i1xDur" />
+    <result column="I1X_ONLINE_TIMES" jdbcType="INTEGER" property="i1xOnlineTimes" />
+    <result column="I1X_BILLED_DUR" jdbcType="INTEGER" property="i1xBilledDur" />
+    <result column="I1X_LOC_AMT" jdbcType="INTEGER" property="i1xLocAmt" />
+    <result column="I1X_LOC_TOT_BYTES" jdbcType="BIGINT" property="i1xLocTotBytes" />
+    <result column="I1X_LOC_DUR" jdbcType="INTEGER" property="i1xLocDur" />
+    <result column="I1X_LOC_ONLINE_TIMES" jdbcType="INTEGER" property="i1xLocOnlineTimes" />
+    <result column="I1X_LOC_BILLED_DUR" jdbcType="INTEGER" property="i1xLocBilledDur" />
+    <result column="I1X_MY_AMT" jdbcType="INTEGER" property="i1xMyAmt" />
+    <result column="I1X_MY_TOT_BYTES" jdbcType="BIGINT" property="i1xMyTotBytes" />
+    <result column="I1X_MY_DUR" jdbcType="INTEGER" property="i1xMyDur" />
+    <result column="I1X_MY_ONLINE_TIMES" jdbcType="INTEGER" property="i1xMyOnlineTimes" />
+    <result column="I1X_MY_BILLED_DUR" jdbcType="INTEGER" property="i1xMyBilledDur" />
+    <result column="WLAN_AMT" jdbcType="INTEGER" property="wlanAmt" />
+    <result column="WLAN_TOT_BYTES" jdbcType="BIGINT" property="wlanTotBytes" />
+    <result column="WLAN_DUR" jdbcType="INTEGER" property="wlanDur" />
+    <result column="WLAN_ONLINE_TIMES" jdbcType="INTEGER" property="wlanOnlineTimes" />
+    <result column="WLAN_BILLED_DUR" jdbcType="INTEGER" property="wlanBilledDur" />
+    <result column="WLAN_LOC_AMT" jdbcType="INTEGER" property="wlanLocAmt" />
+    <result column="WLAN_LOC_TOT_BYTES" jdbcType="BIGINT" property="wlanLocTotBytes" />
+    <result column="WLAN_LOC_DUR" jdbcType="INTEGER" property="wlanLocDur" />
+    <result column="WLAN_LOC_ONLINE_TIMES" jdbcType="INTEGER" property="wlanLocOnlineTimes" />
+    <result column="WLAN_LOC_BILLED_DUR" jdbcType="INTEGER" property="wlanLocBilledDur" />
+    <result column="WLAN_MY_AMT" jdbcType="INTEGER" property="wlanMyAmt" />
+    <result column="WLAN_MY_TOT_BYTES" jdbcType="BIGINT" property="wlanMyTotBytes" />
+    <result column="WLAN_MY_DUR" jdbcType="INTEGER" property="wlanMyDur" />
+    <result column="WLAN_MY_ONLINE_TIMES" jdbcType="INTEGER" property="wlanMyOnlineTimes" />
+    <result column="WLAN_MY_BILLED_DUR" jdbcType="INTEGER" property="wlanMyBilledDur" />
+    <result column="I3G_AMT" jdbcType="INTEGER" property="i3gAmt" />
+    <result column="I3G_TOT_BYTES" jdbcType="BIGINT" property="i3gTotBytes" />
+    <result column="I3G_DUR" jdbcType="INTEGER" property="i3gDur" />
+    <result column="I3G_ONLINE_TIMES" jdbcType="INTEGER" property="i3gOnlineTimes" />
+    <result column="I3G_BILLED_DUR" jdbcType="INTEGER" property="i3gBilledDur" />
+    <result column="I3G_LOC_AMT" jdbcType="INTEGER" property="i3gLocAmt" />
+    <result column="I3G_LOC_TOT_BYTES" jdbcType="BIGINT" property="i3gLocTotBytes" />
+    <result column="I3G_LOC_DUR" jdbcType="INTEGER" property="i3gLocDur" />
+    <result column="I3G_LOC_ONLINE_TIMES" jdbcType="INTEGER" property="i3gLocOnlineTimes" />
+    <result column="I3G_LOC_BILLED_DUR" jdbcType="INTEGER" property="i3gLocBilledDur" />
+    <result column="I3G_MY_AMT" jdbcType="INTEGER" property="i3gMyAmt" />
+    <result column="I3G_MY_TOT_BYTES" jdbcType="BIGINT" property="i3gMyTotBytes" />
+    <result column="I3G_MY_DUR" jdbcType="INTEGER" property="i3gMyDur" />
+    <result column="I3G_MY_ONLINE_TIMES" jdbcType="INTEGER" property="i3gMyOnlineTimes" />
+    <result column="I3G_MY_BILLED_DUR" jdbcType="INTEGER" property="i3gMyBilledDur" />
+    <result column="INNER_SEND_SMS_AMT" jdbcType="INTEGER" property="innerSendSmsAmt" />
+    <result column="INNER_SEND_SMS_TIMES" jdbcType="INTEGER" property="innerSendSmsTimes" />
+    <result column="INTER_SEND_SMS_AMT" jdbcType="INTEGER" property="interSendSmsAmt" />
+    <result column="INTER_SEND_SMS_TIMES" jdbcType="INTEGER" property="interSendSmsTimes" />
+    <result column="VOICE_TIMES" jdbcType="INTEGER" property="voiceTimes" />
+    <result column="VOICE_DUR" jdbcType="INTEGER" property="voiceDur" />
+    <result column="VOICE_AMT" jdbcType="INTEGER" property="voiceAmt" />
+    <result column="VOICE_BILLED_DUR" jdbcType="INTEGER" property="voiceBilledDur" />
+    <result column="VOICE_CALLING_TIMES" jdbcType="INTEGER" property="voiceCallingTimes" />
+    <result column="VOICE_CALLING_DUR" jdbcType="INTEGER" property="voiceCallingDur" />
+    <result column="VOICE_CALLING_AMT" jdbcType="INTEGER" property="voiceCallingAmt" />
+    <result column="VOICE_CALLING_BILLED_DUR" jdbcType="INTEGER" property="voiceCallingBilledDur" />
+    <result column="VOICE_CALLED_TIMES" jdbcType="INTEGER" property="voiceCalledTimes" />
+    <result column="VOICE_CALLED_DUR" jdbcType="INTEGER" property="voiceCalledDur" />
+    <result column="VOICE_CALLED_AMT" jdbcType="INTEGER" property="voiceCalledAmt" />
+    <result column="VOICE_CALLED_BILLED_DUR" jdbcType="INTEGER" property="voiceCalledBilledDur" />
+    <result column="LOC_CALLING_TIMES" jdbcType="INTEGER" property="locCallingTimes" />
+    <result column="LOC_CALLING_DUR" jdbcType="INTEGER" property="locCallingDur" />
+    <result column="LOC_CALLING_AMT" jdbcType="INTEGER" property="locCallingAmt" />
+    <result column="LOC_CALLING_BILLED_DUR" jdbcType="INTEGER" property="locCallingBilledDur" />
+    <result column="DDD_CALLING_TIMES" jdbcType="INTEGER" property="dddCallingTimes" />
+    <result column="DDD_CALLING_DUR" jdbcType="INTEGER" property="dddCallingDur" />
+    <result column="DDD_CALLING_AMT" jdbcType="INTEGER" property="dddCallingAmt" />
+    <result column="DDD_CALLING_BILLED_DUR" jdbcType="INTEGER" property="dddCallingBilledDur" />
+    <result column="IDD_CALLING_TIMES" jdbcType="INTEGER" property="iddCallingTimes" />
+    <result column="IDD_CALLING_DUR" jdbcType="INTEGER" property="iddCallingDur" />
+    <result column="IDD_CALLING_AMT" jdbcType="INTEGER" property="iddCallingAmt" />
+    <result column="IDD_CALLING_BILLED_DUR" jdbcType="INTEGER" property="iddCallingBilledDur" />
+    <result column="GAT_CALLING_TIMES" jdbcType="INTEGER" property="gatCallingTimes" />
+    <result column="GAT_CALLING_DUR" jdbcType="INTEGER" property="gatCallingDur" />
+    <result column="GAT_CALLING_AMT" jdbcType="INTEGER" property="gatCallingAmt" />
+    <result column="GAT_CALLING_BILLED_DUR" jdbcType="INTEGER" property="gatCallingBilledDur" />
+    <result column="INNER_MY_CALLING_TIMES" jdbcType="INTEGER" property="innerMyCallingTimes" />
+    <result column="INNER_MY_CALLING_DUR" jdbcType="INTEGER" property="innerMyCallingDur" />
+    <result column="INNER_MY_CALLING_AMT" jdbcType="INTEGER" property="innerMyCallingAmt" />
+    <result column="INNER_MY_CALLING_BILLED_DUR" jdbcType="INTEGER" property="innerMyCallingBilledDur" />
+    <result column="INTER_MY_CALLING_TIMES" jdbcType="INTEGER" property="interMyCallingTimes" />
+    <result column="INTER_MY_CALLING_DUR" jdbcType="INTEGER" property="interMyCallingDur" />
+    <result column="INTER_MY_CALLING_AMT" jdbcType="INTEGER" property="interMyCallingAmt" />
+    <result column="INTER_MY_CALLING_BILLED_DUR" jdbcType="INTEGER" property="interMyCallingBilledDur" />
+    <result column="GAT_MY_CALLING_TIMES" jdbcType="INTEGER" property="gatMyCallingTimes" />
+    <result column="GAT_MY_CALLING_DUR" jdbcType="INTEGER" property="gatMyCallingDur" />
+    <result column="GAT_MY_CALLING_AMT" jdbcType="INTEGER" property="gatMyCallingAmt" />
+    <result column="GAT_MY_CALLING_BILLED_DUR" jdbcType="INTEGER" property="gatMyCallingBilledDur" />
+    <result column="LOC_CALLED_TIMES" jdbcType="INTEGER" property="locCalledTimes" />
+    <result column="LOC_CALLED_DUR" jdbcType="INTEGER" property="locCalledDur" />
+    <result column="LOC_CALLED_AMT" jdbcType="INTEGER" property="locCalledAmt" />
+    <result column="LOC_CALLED_BILLED_DUR" jdbcType="INTEGER" property="locCalledBilledDur" />
+    <result column="INNER_MY_CALLED_TIMES" jdbcType="INTEGER" property="innerMyCalledTimes" />
+    <result column="INNER_MY_CALLED_DUR" jdbcType="INTEGER" property="innerMyCalledDur" />
+    <result column="INNER_MY_CALLED_AMT" jdbcType="INTEGER" property="innerMyCalledAmt" />
+    <result column="INNER_MY_CALLED_BILLED_DUR" jdbcType="INTEGER" property="innerMyCalledBilledDur" />
+    <result column="INTER_MY_CALLED_TIMES" jdbcType="INTEGER" property="interMyCalledTimes" />
+    <result column="INTER_MY_CALLED_DUR" jdbcType="INTEGER" property="interMyCalledDur" />
+    <result column="INTER_MY_CALLED_AMT" jdbcType="INTEGER" property="interMyCalledAmt" />
+    <result column="INTER_MY_CALLED_BILLED_DUR" jdbcType="INTEGER" property="interMyCalledBilledDur" />
+    <result column="GAT_MY_CALLED_TIMES" jdbcType="INTEGER" property="gatMyCalledTimes" />
+    <result column="GAT_MY_CALLED_DUR" jdbcType="INTEGER" property="gatMyCalledDur" />
+    <result column="GAT_MY_CALLED_AMT" jdbcType="INTEGER" property="gatMyCalledAmt" />
+    <result column="GAT_MY_CALLED_BILLED_DUR" jdbcType="INTEGER" property="gatMyCalledBilledDur" />
+    <result column="PROD_INST_CID" jdbcType="VARCHAR" property="prodInstCid" />
+    <result column="CUST_CID" jdbcType="VARCHAR" property="custCid" />
+    <result column="ACNT_CID" jdbcType="VARCHAR" property="acntCid" />
+    <result column="TOTAL_AMT" jdbcType="INTEGER" property="totalAmt" />
+    <result column="TOTAL_RENTAL_AMT" jdbcType="INTEGER" property="totalRentalAmt" />
+    <result column="TOTAL_USE_AMT" jdbcType="INTEGER" property="totalUseAmt" />
+    <result column="ITEM_DEVICE_MODEL" jdbcType="VARCHAR" property="itemDeviceModel" />
+    <result column="DEVICE_CLASS" jdbcType="VARCHAR" property="deviceClass" />
+    <result column="G_TYPE" jdbcType="VARCHAR" property="gType" />
+    <result column="UNIT_PRICE" jdbcType="INTEGER" property="unitPrice" />
+    <result column="IF_WAP" jdbcType="INTEGER" property="ifWap" />
+    <result column="IF_NET" jdbcType="INTEGER" property="ifNet" />
+    <result column="WAP_TIMES" jdbcType="INTEGER" property="wapTimes" />
+    <result column="NET_TIMES" jdbcType="INTEGER" property="netTimes" />
+    <result column="WAP_GROSS_BYTES" jdbcType="BIGINT" property="wapGrossBytes" />
+    <result column="NET_GROSS_BYTES" jdbcType="BIGINT" property="netGrossBytes" />
+    <result column="RECEIVE_1X" jdbcType="INTEGER" property="receive1x" />
+    <result column="RECEIVE_1X_M" jdbcType="INTEGER" property="receive1xM" />
+    <result column="SEND_1X" jdbcType="BIGINT" property="send1x" />
+    <result column="SEND_1X_M" jdbcType="INTEGER" property="send1xM" />
+    <result column="RECEIVE_EVDO" jdbcType="BIGINT" property="receiveEvdo" />
+    <result column="RECEIVE_EVDO_M" jdbcType="BIGINT" property="receiveEvdoM" />
+    <result column="SEND_EVDO" jdbcType="BIGINT" property="sendEvdo" />
+    <result column="SEND_EVDO_M" jdbcType="BIGINT" property="sendEvdoM" />
+    <result column="RECEIVE_WIFI" jdbcType="INTEGER" property="receiveWifi" />
+    <result column="RECEIVE_WIFI_M" jdbcType="INTEGER" property="receiveWifiM" />
+    <result column="SEND_WIFI" jdbcType="BIGINT" property="sendWifi" />
+    <result column="SEND_WIFI_M" jdbcType="BIGINT" property="sendWifiM" />
+    <result column="IF_TYSX_BILL_FLAG" jdbcType="INTEGER" property="ifTysxBillFlag" />
+    <result column="IF_LIVE_FLAG" jdbcType="INTEGER" property="ifLiveFlag" />
+    <result column="IF_QQ" jdbcType="INTEGER" property="ifQq" />
+    <result column="QQ_DTIMES" jdbcType="INTEGER" property="qqDtimes" />
+    <result column="MMS_TIMES" jdbcType="INTEGER" property="mmsTimes" />
+    <result column="SPMMS_TIMES" jdbcType="INTEGER" property="spmmsTimes" />
+    <result column="IF_SMS_FLAG" jdbcType="INTEGER" property="ifSmsFlag" />
+    <result column="TIMES_SMS_SEND" jdbcType="INTEGER" property="timesSmsSend" />
+    <result column="IF_189MAIL_ACTIVE_FLAG" jdbcType="INTEGER" property="if189mailActiveFlag" />
+    <result column="I4G_AMT" jdbcType="INTEGER" property="i4gAmt" />
+    <result column="I4G_TOT_BYTES" jdbcType="BIGINT" property="i4gTotBytes" />
+    <result column="I4G_DUR" jdbcType="INTEGER" property="i4gDur" />
+    <result column="I4G_ONLINE_TIMES" jdbcType="INTEGER" property="i4gOnlineTimes" />
+    <result column="I4G_BILLED_DUR" jdbcType="INTEGER" property="i4gBilledDur" />
+    <result column="I4G_LOC_AMT" jdbcType="INTEGER" property="i4gLocAmt" />
+    <result column="I4G_LOC_TOT_BYTES" jdbcType="BIGINT" property="i4gLocTotBytes" />
+    <result column="I4G_LOC_DUR" jdbcType="INTEGER" property="i4gLocDur" />
+    <result column="I4G_LOC_ONLINE_TIMES" jdbcType="INTEGER" property="i4gLocOnlineTimes" />
+    <result column="I4G_LOC_BILLED_DUR" jdbcType="INTEGER" property="i4gLocBilledDur" />
+    <result column="I4G_MY_AMT_IN" jdbcType="BIGINT" property="i4gMyAmtIn" />
+    <result column="I4G_MY_AMT_OUT" jdbcType="INTEGER" property="i4gMyAmtOut" />
+    <result column="I4G_MY_TOT_BYTES_IN" jdbcType="BIGINT" property="i4gMyTotBytesIn" />
+    <result column="I4G_MY_TOT_BYTES_OUT" jdbcType="INTEGER" property="i4gMyTotBytesOut" />
+    <result column="I4G_MY_DUR_IN" jdbcType="INTEGER" property="i4gMyDurIn" />
+    <result column="I4G_MY_DUR_OUT" jdbcType="INTEGER" property="i4gMyDurOut" />
+    <result column="I4G_MY_ONLINE_TIMES_IN" jdbcType="INTEGER" property="i4gMyOnlineTimesIn" />
+    <result column="I4G_MY_ONLINE_TIMES_OUT" jdbcType="INTEGER" property="i4gMyOnlineTimesOut" />
+    <result column="I4G_MY_BILLED_DUR_IN" jdbcType="INTEGER" property="i4gMyBilledDurIn" />
+    <result column="I4G_MY_BILLED_DUR_OUT" jdbcType="INTEGER" property="i4gMyBilledDurOut" />
+    <result column="PROM_NUM" jdbcType="VARCHAR" property="promNum" />
+    <result column="PROM_NAME" jdbcType="VARCHAR" property="promName" />
+    <result column="SALE_POLICY_NAME" jdbcType="VARCHAR" property="salePolicyName" />
+    <result column="PROM_START_DT" jdbcType="VARCHAR" property="promStartDt" />
+    <result column="PROM_END_DT" jdbcType="VARCHAR" property="promEndDt" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    ID, DTA_DATE, PROD_SPEC_ID, INTEGRATION_CD, USER_ID, VALUE_ADDED_AMT, CAILING_AMT, 
+    CAILING_AMOUNT, SP_SMS_AMT, SP_SMS_AMOUNT, INTERNET_AMT, INTERNET_TOT_BYTES, INTERNET_DUR, 
+    INTERNET_ONLINE_TIMES, INTERNET_BILLED_DUR, I1X_AMT, I1X_TOT_BYTES, I1X_DUR, I1X_ONLINE_TIMES, 
+    I1X_BILLED_DUR, I1X_LOC_AMT, I1X_LOC_TOT_BYTES, I1X_LOC_DUR, I1X_LOC_ONLINE_TIMES, 
+    I1X_LOC_BILLED_DUR, I1X_MY_AMT, I1X_MY_TOT_BYTES, I1X_MY_DUR, I1X_MY_ONLINE_TIMES, 
+    I1X_MY_BILLED_DUR, WLAN_AMT, WLAN_TOT_BYTES, WLAN_DUR, WLAN_ONLINE_TIMES, WLAN_BILLED_DUR, 
+    WLAN_LOC_AMT, WLAN_LOC_TOT_BYTES, WLAN_LOC_DUR, WLAN_LOC_ONLINE_TIMES, WLAN_LOC_BILLED_DUR, 
+    WLAN_MY_AMT, WLAN_MY_TOT_BYTES, WLAN_MY_DUR, WLAN_MY_ONLINE_TIMES, WLAN_MY_BILLED_DUR, 
+    I3G_AMT, I3G_TOT_BYTES, I3G_DUR, I3G_ONLINE_TIMES, I3G_BILLED_DUR, I3G_LOC_AMT, I3G_LOC_TOT_BYTES, 
+    I3G_LOC_DUR, I3G_LOC_ONLINE_TIMES, I3G_LOC_BILLED_DUR, I3G_MY_AMT, I3G_MY_TOT_BYTES, 
+    I3G_MY_DUR, I3G_MY_ONLINE_TIMES, I3G_MY_BILLED_DUR, INNER_SEND_SMS_AMT, INNER_SEND_SMS_TIMES, 
+    INTER_SEND_SMS_AMT, INTER_SEND_SMS_TIMES, VOICE_TIMES, VOICE_DUR, VOICE_AMT, VOICE_BILLED_DUR, 
+    VOICE_CALLING_TIMES, VOICE_CALLING_DUR, VOICE_CALLING_AMT, VOICE_CALLING_BILLED_DUR, 
+    VOICE_CALLED_TIMES, VOICE_CALLED_DUR, VOICE_CALLED_AMT, VOICE_CALLED_BILLED_DUR, 
+    LOC_CALLING_TIMES, LOC_CALLING_DUR, LOC_CALLING_AMT, LOC_CALLING_BILLED_DUR, DDD_CALLING_TIMES, 
+    DDD_CALLING_DUR, DDD_CALLING_AMT, DDD_CALLING_BILLED_DUR, IDD_CALLING_TIMES, IDD_CALLING_DUR, 
+    IDD_CALLING_AMT, IDD_CALLING_BILLED_DUR, GAT_CALLING_TIMES, GAT_CALLING_DUR, GAT_CALLING_AMT, 
+    GAT_CALLING_BILLED_DUR, INNER_MY_CALLING_TIMES, INNER_MY_CALLING_DUR, INNER_MY_CALLING_AMT, 
+    INNER_MY_CALLING_BILLED_DUR, INTER_MY_CALLING_TIMES, INTER_MY_CALLING_DUR, INTER_MY_CALLING_AMT, 
+    INTER_MY_CALLING_BILLED_DUR, GAT_MY_CALLING_TIMES, GAT_MY_CALLING_DUR, GAT_MY_CALLING_AMT, 
+    GAT_MY_CALLING_BILLED_DUR, LOC_CALLED_TIMES, LOC_CALLED_DUR, LOC_CALLED_AMT, LOC_CALLED_BILLED_DUR, 
+    INNER_MY_CALLED_TIMES, INNER_MY_CALLED_DUR, INNER_MY_CALLED_AMT, INNER_MY_CALLED_BILLED_DUR, 
+    INTER_MY_CALLED_TIMES, INTER_MY_CALLED_DUR, INTER_MY_CALLED_AMT, INTER_MY_CALLED_BILLED_DUR, 
+    GAT_MY_CALLED_TIMES, GAT_MY_CALLED_DUR, GAT_MY_CALLED_AMT, GAT_MY_CALLED_BILLED_DUR, 
+    PROD_INST_CID, CUST_CID, ACNT_CID, TOTAL_AMT, TOTAL_RENTAL_AMT, TOTAL_USE_AMT, ITEM_DEVICE_MODEL, 
+    DEVICE_CLASS, G_TYPE, UNIT_PRICE, IF_WAP, IF_NET, WAP_TIMES, NET_TIMES, WAP_GROSS_BYTES, 
+    NET_GROSS_BYTES, RECEIVE_1X, RECEIVE_1X_M, SEND_1X, SEND_1X_M, RECEIVE_EVDO, RECEIVE_EVDO_M, 
+    SEND_EVDO, SEND_EVDO_M, RECEIVE_WIFI, RECEIVE_WIFI_M, SEND_WIFI, SEND_WIFI_M, IF_TYSX_BILL_FLAG, 
+    IF_LIVE_FLAG, IF_QQ, QQ_DTIMES, MMS_TIMES, SPMMS_TIMES, IF_SMS_FLAG, TIMES_SMS_SEND, 
+    IF_189MAIL_ACTIVE_FLAG, I4G_AMT, I4G_TOT_BYTES, I4G_DUR, I4G_ONLINE_TIMES, I4G_BILLED_DUR, 
+    I4G_LOC_AMT, I4G_LOC_TOT_BYTES, I4G_LOC_DUR, I4G_LOC_ONLINE_TIMES, I4G_LOC_BILLED_DUR, 
+    I4G_MY_AMT_IN, I4G_MY_AMT_OUT, I4G_MY_TOT_BYTES_IN, I4G_MY_TOT_BYTES_OUT, I4G_MY_DUR_IN, 
+    I4G_MY_DUR_OUT, I4G_MY_ONLINE_TIMES_IN, I4G_MY_ONLINE_TIMES_OUT, I4G_MY_BILLED_DUR_IN, 
+    I4G_MY_BILLED_DUR_OUT, PROM_NUM, PROM_NAME, SALE_POLICY_NAME, PROM_START_DT, PROM_END_DT
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from cdma
+    where ID = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from cdma
+    where ID = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.aby.record.model.Record">
+    insert into cdma (ID, DTA_DATE, PROD_SPEC_ID, 
+      INTEGRATION_CD, USER_ID, VALUE_ADDED_AMT, 
+      CAILING_AMT, CAILING_AMOUNT, SP_SMS_AMT, 
+      SP_SMS_AMOUNT, INTERNET_AMT, INTERNET_TOT_BYTES, 
+      INTERNET_DUR, INTERNET_ONLINE_TIMES, INTERNET_BILLED_DUR, 
+      I1X_AMT, I1X_TOT_BYTES, I1X_DUR, 
+      I1X_ONLINE_TIMES, I1X_BILLED_DUR, I1X_LOC_AMT, 
+      I1X_LOC_TOT_BYTES, I1X_LOC_DUR, I1X_LOC_ONLINE_TIMES, 
+      I1X_LOC_BILLED_DUR, I1X_MY_AMT, I1X_MY_TOT_BYTES, 
+      I1X_MY_DUR, I1X_MY_ONLINE_TIMES, I1X_MY_BILLED_DUR, 
+      WLAN_AMT, WLAN_TOT_BYTES, WLAN_DUR, 
+      WLAN_ONLINE_TIMES, WLAN_BILLED_DUR, WLAN_LOC_AMT, 
+      WLAN_LOC_TOT_BYTES, WLAN_LOC_DUR, WLAN_LOC_ONLINE_TIMES, 
+      WLAN_LOC_BILLED_DUR, WLAN_MY_AMT, WLAN_MY_TOT_BYTES, 
+      WLAN_MY_DUR, WLAN_MY_ONLINE_TIMES, WLAN_MY_BILLED_DUR, 
+      I3G_AMT, I3G_TOT_BYTES, I3G_DUR, 
+      I3G_ONLINE_TIMES, I3G_BILLED_DUR, I3G_LOC_AMT, 
+      I3G_LOC_TOT_BYTES, I3G_LOC_DUR, I3G_LOC_ONLINE_TIMES, 
+      I3G_LOC_BILLED_DUR, I3G_MY_AMT, I3G_MY_TOT_BYTES, 
+      I3G_MY_DUR, I3G_MY_ONLINE_TIMES, I3G_MY_BILLED_DUR, 
+      INNER_SEND_SMS_AMT, INNER_SEND_SMS_TIMES, INTER_SEND_SMS_AMT, 
+      INTER_SEND_SMS_TIMES, VOICE_TIMES, VOICE_DUR, 
+      VOICE_AMT, VOICE_BILLED_DUR, VOICE_CALLING_TIMES, 
+      VOICE_CALLING_DUR, VOICE_CALLING_AMT, VOICE_CALLING_BILLED_DUR, 
+      VOICE_CALLED_TIMES, VOICE_CALLED_DUR, VOICE_CALLED_AMT, 
+      VOICE_CALLED_BILLED_DUR, LOC_CALLING_TIMES, 
+      LOC_CALLING_DUR, LOC_CALLING_AMT, LOC_CALLING_BILLED_DUR, 
+      DDD_CALLING_TIMES, DDD_CALLING_DUR, DDD_CALLING_AMT, 
+      DDD_CALLING_BILLED_DUR, IDD_CALLING_TIMES, IDD_CALLING_DUR, 
+      IDD_CALLING_AMT, IDD_CALLING_BILLED_DUR, GAT_CALLING_TIMES, 
+      GAT_CALLING_DUR, GAT_CALLING_AMT, GAT_CALLING_BILLED_DUR, 
+      INNER_MY_CALLING_TIMES, INNER_MY_CALLING_DUR, 
+      INNER_MY_CALLING_AMT, INNER_MY_CALLING_BILLED_DUR, 
+      INTER_MY_CALLING_TIMES, INTER_MY_CALLING_DUR, 
+      INTER_MY_CALLING_AMT, INTER_MY_CALLING_BILLED_DUR, 
+      GAT_MY_CALLING_TIMES, GAT_MY_CALLING_DUR, GAT_MY_CALLING_AMT, 
+      GAT_MY_CALLING_BILLED_DUR, LOC_CALLED_TIMES, 
+      LOC_CALLED_DUR, LOC_CALLED_AMT, LOC_CALLED_BILLED_DUR, 
+      INNER_MY_CALLED_TIMES, INNER_MY_CALLED_DUR, INNER_MY_CALLED_AMT, 
+      INNER_MY_CALLED_BILLED_DUR, INTER_MY_CALLED_TIMES, 
+      INTER_MY_CALLED_DUR, INTER_MY_CALLED_AMT, INTER_MY_CALLED_BILLED_DUR, 
+      GAT_MY_CALLED_TIMES, GAT_MY_CALLED_DUR, GAT_MY_CALLED_AMT, 
+      GAT_MY_CALLED_BILLED_DUR, PROD_INST_CID, CUST_CID, 
+      ACNT_CID, TOTAL_AMT, TOTAL_RENTAL_AMT, 
+      TOTAL_USE_AMT, ITEM_DEVICE_MODEL, DEVICE_CLASS, 
+      G_TYPE, UNIT_PRICE, IF_WAP, 
+      IF_NET, WAP_TIMES, NET_TIMES, 
+      WAP_GROSS_BYTES, NET_GROSS_BYTES, RECEIVE_1X, 
+      RECEIVE_1X_M, SEND_1X, SEND_1X_M, 
+      RECEIVE_EVDO, RECEIVE_EVDO_M, SEND_EVDO, 
+      SEND_EVDO_M, RECEIVE_WIFI, RECEIVE_WIFI_M, 
+      SEND_WIFI, SEND_WIFI_M, IF_TYSX_BILL_FLAG, 
+      IF_LIVE_FLAG, IF_QQ, QQ_DTIMES, 
+      MMS_TIMES, SPMMS_TIMES, IF_SMS_FLAG, 
+      TIMES_SMS_SEND, IF_189MAIL_ACTIVE_FLAG, I4G_AMT, 
+      I4G_TOT_BYTES, I4G_DUR, I4G_ONLINE_TIMES, 
+      I4G_BILLED_DUR, I4G_LOC_AMT, I4G_LOC_TOT_BYTES, 
+      I4G_LOC_DUR, I4G_LOC_ONLINE_TIMES, I4G_LOC_BILLED_DUR, 
+      I4G_MY_AMT_IN, I4G_MY_AMT_OUT, I4G_MY_TOT_BYTES_IN, 
+      I4G_MY_TOT_BYTES_OUT, I4G_MY_DUR_IN, I4G_MY_DUR_OUT, 
+      I4G_MY_ONLINE_TIMES_IN, I4G_MY_ONLINE_TIMES_OUT, 
+      I4G_MY_BILLED_DUR_IN, I4G_MY_BILLED_DUR_OUT, PROM_NUM, 
+      PROM_NAME, SALE_POLICY_NAME, PROM_START_DT, 
+      PROM_END_DT)
+    values (#{id,jdbcType=INTEGER}, #{dtaDate,jdbcType=VARCHAR}, #{prodSpecId,jdbcType=INTEGER}, 
+      #{integrationCd,jdbcType=VARCHAR}, #{userId,jdbcType=VARCHAR}, #{valueAddedAmt,jdbcType=INTEGER}, 
+      #{cailingAmt,jdbcType=INTEGER}, #{cailingAmount,jdbcType=INTEGER}, #{spSmsAmt,jdbcType=INTEGER}, 
+      #{spSmsAmount,jdbcType=INTEGER}, #{internetAmt,jdbcType=INTEGER}, #{internetTotBytes,jdbcType=BIGINT}, 
+      #{internetDur,jdbcType=INTEGER}, #{internetOnlineTimes,jdbcType=INTEGER}, #{internetBilledDur,jdbcType=INTEGER}, 
+      #{i1xAmt,jdbcType=INTEGER}, #{i1xTotBytes,jdbcType=BIGINT}, #{i1xDur,jdbcType=INTEGER}, 
+      #{i1xOnlineTimes,jdbcType=INTEGER}, #{i1xBilledDur,jdbcType=INTEGER}, #{i1xLocAmt,jdbcType=INTEGER}, 
+      #{i1xLocTotBytes,jdbcType=BIGINT}, #{i1xLocDur,jdbcType=INTEGER}, #{i1xLocOnlineTimes,jdbcType=INTEGER}, 
+      #{i1xLocBilledDur,jdbcType=INTEGER}, #{i1xMyAmt,jdbcType=INTEGER}, #{i1xMyTotBytes,jdbcType=BIGINT}, 
+      #{i1xMyDur,jdbcType=INTEGER}, #{i1xMyOnlineTimes,jdbcType=INTEGER}, #{i1xMyBilledDur,jdbcType=INTEGER}, 
+      #{wlanAmt,jdbcType=INTEGER}, #{wlanTotBytes,jdbcType=BIGINT}, #{wlanDur,jdbcType=INTEGER}, 
+      #{wlanOnlineTimes,jdbcType=INTEGER}, #{wlanBilledDur,jdbcType=INTEGER}, #{wlanLocAmt,jdbcType=INTEGER}, 
+      #{wlanLocTotBytes,jdbcType=BIGINT}, #{wlanLocDur,jdbcType=INTEGER}, #{wlanLocOnlineTimes,jdbcType=INTEGER}, 
+      #{wlanLocBilledDur,jdbcType=INTEGER}, #{wlanMyAmt,jdbcType=INTEGER}, #{wlanMyTotBytes,jdbcType=BIGINT}, 
+      #{wlanMyDur,jdbcType=INTEGER}, #{wlanMyOnlineTimes,jdbcType=INTEGER}, #{wlanMyBilledDur,jdbcType=INTEGER}, 
+      #{i3gAmt,jdbcType=INTEGER}, #{i3gTotBytes,jdbcType=BIGINT}, #{i3gDur,jdbcType=INTEGER}, 
+      #{i3gOnlineTimes,jdbcType=INTEGER}, #{i3gBilledDur,jdbcType=INTEGER}, #{i3gLocAmt,jdbcType=INTEGER}, 
+      #{i3gLocTotBytes,jdbcType=BIGINT}, #{i3gLocDur,jdbcType=INTEGER}, #{i3gLocOnlineTimes,jdbcType=INTEGER}, 
+      #{i3gLocBilledDur,jdbcType=INTEGER}, #{i3gMyAmt,jdbcType=INTEGER}, #{i3gMyTotBytes,jdbcType=BIGINT}, 
+      #{i3gMyDur,jdbcType=INTEGER}, #{i3gMyOnlineTimes,jdbcType=INTEGER}, #{i3gMyBilledDur,jdbcType=INTEGER}, 
+      #{innerSendSmsAmt,jdbcType=INTEGER}, #{innerSendSmsTimes,jdbcType=INTEGER}, #{interSendSmsAmt,jdbcType=INTEGER}, 
+      #{interSendSmsTimes,jdbcType=INTEGER}, #{voiceTimes,jdbcType=INTEGER}, #{voiceDur,jdbcType=INTEGER}, 
+      #{voiceAmt,jdbcType=INTEGER}, #{voiceBilledDur,jdbcType=INTEGER}, #{voiceCallingTimes,jdbcType=INTEGER}, 
+      #{voiceCallingDur,jdbcType=INTEGER}, #{voiceCallingAmt,jdbcType=INTEGER}, #{voiceCallingBilledDur,jdbcType=INTEGER}, 
+      #{voiceCalledTimes,jdbcType=INTEGER}, #{voiceCalledDur,jdbcType=INTEGER}, #{voiceCalledAmt,jdbcType=INTEGER}, 
+      #{voiceCalledBilledDur,jdbcType=INTEGER}, #{locCallingTimes,jdbcType=INTEGER}, 
+      #{locCallingDur,jdbcType=INTEGER}, #{locCallingAmt,jdbcType=INTEGER}, #{locCallingBilledDur,jdbcType=INTEGER}, 
+      #{dddCallingTimes,jdbcType=INTEGER}, #{dddCallingDur,jdbcType=INTEGER}, #{dddCallingAmt,jdbcType=INTEGER}, 
+      #{dddCallingBilledDur,jdbcType=INTEGER}, #{iddCallingTimes,jdbcType=INTEGER}, #{iddCallingDur,jdbcType=INTEGER}, 
+      #{iddCallingAmt,jdbcType=INTEGER}, #{iddCallingBilledDur,jdbcType=INTEGER}, #{gatCallingTimes,jdbcType=INTEGER}, 
+      #{gatCallingDur,jdbcType=INTEGER}, #{gatCallingAmt,jdbcType=INTEGER}, #{gatCallingBilledDur,jdbcType=INTEGER}, 
+      #{innerMyCallingTimes,jdbcType=INTEGER}, #{innerMyCallingDur,jdbcType=INTEGER}, 
+      #{innerMyCallingAmt,jdbcType=INTEGER}, #{innerMyCallingBilledDur,jdbcType=INTEGER}, 
+      #{interMyCallingTimes,jdbcType=INTEGER}, #{interMyCallingDur,jdbcType=INTEGER}, 
+      #{interMyCallingAmt,jdbcType=INTEGER}, #{interMyCallingBilledDur,jdbcType=INTEGER}, 
+      #{gatMyCallingTimes,jdbcType=INTEGER}, #{gatMyCallingDur,jdbcType=INTEGER}, #{gatMyCallingAmt,jdbcType=INTEGER}, 
+      #{gatMyCallingBilledDur,jdbcType=INTEGER}, #{locCalledTimes,jdbcType=INTEGER}, 
+      #{locCalledDur,jdbcType=INTEGER}, #{locCalledAmt,jdbcType=INTEGER}, #{locCalledBilledDur,jdbcType=INTEGER}, 
+      #{innerMyCalledTimes,jdbcType=INTEGER}, #{innerMyCalledDur,jdbcType=INTEGER}, #{innerMyCalledAmt,jdbcType=INTEGER}, 
+      #{innerMyCalledBilledDur,jdbcType=INTEGER}, #{interMyCalledTimes,jdbcType=INTEGER}, 
+      #{interMyCalledDur,jdbcType=INTEGER}, #{interMyCalledAmt,jdbcType=INTEGER}, #{interMyCalledBilledDur,jdbcType=INTEGER}, 
+      #{gatMyCalledTimes,jdbcType=INTEGER}, #{gatMyCalledDur,jdbcType=INTEGER}, #{gatMyCalledAmt,jdbcType=INTEGER}, 
+      #{gatMyCalledBilledDur,jdbcType=INTEGER}, #{prodInstCid,jdbcType=VARCHAR}, #{custCid,jdbcType=VARCHAR}, 
+      #{acntCid,jdbcType=VARCHAR}, #{totalAmt,jdbcType=INTEGER}, #{totalRentalAmt,jdbcType=INTEGER}, 
+      #{totalUseAmt,jdbcType=INTEGER}, #{itemDeviceModel,jdbcType=VARCHAR}, #{deviceClass,jdbcType=VARCHAR}, 
+      #{gType,jdbcType=VARCHAR}, #{unitPrice,jdbcType=INTEGER}, #{ifWap,jdbcType=INTEGER}, 
+      #{ifNet,jdbcType=INTEGER}, #{wapTimes,jdbcType=INTEGER}, #{netTimes,jdbcType=INTEGER}, 
+      #{wapGrossBytes,jdbcType=BIGINT}, #{netGrossBytes,jdbcType=BIGINT}, #{receive1x,jdbcType=INTEGER}, 
+      #{receive1xM,jdbcType=INTEGER}, #{send1x,jdbcType=BIGINT}, #{send1xM,jdbcType=INTEGER}, 
+      #{receiveEvdo,jdbcType=BIGINT}, #{receiveEvdoM,jdbcType=BIGINT}, #{sendEvdo,jdbcType=BIGINT}, 
+      #{sendEvdoM,jdbcType=BIGINT}, #{receiveWifi,jdbcType=INTEGER}, #{receiveWifiM,jdbcType=INTEGER}, 
+      #{sendWifi,jdbcType=BIGINT}, #{sendWifiM,jdbcType=BIGINT}, #{ifTysxBillFlag,jdbcType=INTEGER}, 
+      #{ifLiveFlag,jdbcType=INTEGER}, #{ifQq,jdbcType=INTEGER}, #{qqDtimes,jdbcType=INTEGER}, 
+      #{mmsTimes,jdbcType=INTEGER}, #{spmmsTimes,jdbcType=INTEGER}, #{ifSmsFlag,jdbcType=INTEGER}, 
+      #{timesSmsSend,jdbcType=INTEGER}, #{if189mailActiveFlag,jdbcType=INTEGER}, #{i4gAmt,jdbcType=INTEGER}, 
+      #{i4gTotBytes,jdbcType=BIGINT}, #{i4gDur,jdbcType=INTEGER}, #{i4gOnlineTimes,jdbcType=INTEGER}, 
+      #{i4gBilledDur,jdbcType=INTEGER}, #{i4gLocAmt,jdbcType=INTEGER}, #{i4gLocTotBytes,jdbcType=BIGINT}, 
+      #{i4gLocDur,jdbcType=INTEGER}, #{i4gLocOnlineTimes,jdbcType=INTEGER}, #{i4gLocBilledDur,jdbcType=INTEGER}, 
+      #{i4gMyAmtIn,jdbcType=BIGINT}, #{i4gMyAmtOut,jdbcType=INTEGER}, #{i4gMyTotBytesIn,jdbcType=BIGINT}, 
+      #{i4gMyTotBytesOut,jdbcType=INTEGER}, #{i4gMyDurIn,jdbcType=INTEGER}, #{i4gMyDurOut,jdbcType=INTEGER}, 
+      #{i4gMyOnlineTimesIn,jdbcType=INTEGER}, #{i4gMyOnlineTimesOut,jdbcType=INTEGER}, 
+      #{i4gMyBilledDurIn,jdbcType=INTEGER}, #{i4gMyBilledDurOut,jdbcType=INTEGER}, #{promNum,jdbcType=VARCHAR}, 
+      #{promName,jdbcType=VARCHAR}, #{salePolicyName,jdbcType=VARCHAR}, #{promStartDt,jdbcType=VARCHAR}, 
+      #{promEndDt,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.aby.record.model.Record">
+    insert into cdma
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        ID,
+      </if>
+      <if test="dtaDate != null">
+        DTA_DATE,
+      </if>
+      <if test="prodSpecId != null">
+        PROD_SPEC_ID,
+      </if>
+      <if test="integrationCd != null">
+        INTEGRATION_CD,
+      </if>
+      <if test="userId != null">
+        USER_ID,
+      </if>
+      <if test="valueAddedAmt != null">
+        VALUE_ADDED_AMT,
+      </if>
+      <if test="cailingAmt != null">
+        CAILING_AMT,
+      </if>
+      <if test="cailingAmount != null">
+        CAILING_AMOUNT,
+      </if>
+      <if test="spSmsAmt != null">
+        SP_SMS_AMT,
+      </if>
+      <if test="spSmsAmount != null">
+        SP_SMS_AMOUNT,
+      </if>
+      <if test="internetAmt != null">
+        INTERNET_AMT,
+      </if>
+      <if test="internetTotBytes != null">
+        INTERNET_TOT_BYTES,
+      </if>
+      <if test="internetDur != null">
+        INTERNET_DUR,
+      </if>
+      <if test="internetOnlineTimes != null">
+        INTERNET_ONLINE_TIMES,
+      </if>
+      <if test="internetBilledDur != null">
+        INTERNET_BILLED_DUR,
+      </if>
+      <if test="i1xAmt != null">
+        I1X_AMT,
+      </if>
+      <if test="i1xTotBytes != null">
+        I1X_TOT_BYTES,
+      </if>
+      <if test="i1xDur != null">
+        I1X_DUR,
+      </if>
+      <if test="i1xOnlineTimes != null">
+        I1X_ONLINE_TIMES,
+      </if>
+      <if test="i1xBilledDur != null">
+        I1X_BILLED_DUR,
+      </if>
+      <if test="i1xLocAmt != null">
+        I1X_LOC_AMT,
+      </if>
+      <if test="i1xLocTotBytes != null">
+        I1X_LOC_TOT_BYTES,
+      </if>
+      <if test="i1xLocDur != null">
+        I1X_LOC_DUR,
+      </if>
+      <if test="i1xLocOnlineTimes != null">
+        I1X_LOC_ONLINE_TIMES,
+      </if>
+      <if test="i1xLocBilledDur != null">
+        I1X_LOC_BILLED_DUR,
+      </if>
+      <if test="i1xMyAmt != null">
+        I1X_MY_AMT,
+      </if>
+      <if test="i1xMyTotBytes != null">
+        I1X_MY_TOT_BYTES,
+      </if>
+      <if test="i1xMyDur != null">
+        I1X_MY_DUR,
+      </if>
+      <if test="i1xMyOnlineTimes != null">
+        I1X_MY_ONLINE_TIMES,
+      </if>
+      <if test="i1xMyBilledDur != null">
+        I1X_MY_BILLED_DUR,
+      </if>
+      <if test="wlanAmt != null">
+        WLAN_AMT,
+      </if>
+      <if test="wlanTotBytes != null">
+        WLAN_TOT_BYTES,
+      </if>
+      <if test="wlanDur != null">
+        WLAN_DUR,
+      </if>
+      <if test="wlanOnlineTimes != null">
+        WLAN_ONLINE_TIMES,
+      </if>
+      <if test="wlanBilledDur != null">
+        WLAN_BILLED_DUR,
+      </if>
+      <if test="wlanLocAmt != null">
+        WLAN_LOC_AMT,
+      </if>
+      <if test="wlanLocTotBytes != null">
+        WLAN_LOC_TOT_BYTES,
+      </if>
+      <if test="wlanLocDur != null">
+        WLAN_LOC_DUR,
+      </if>
+      <if test="wlanLocOnlineTimes != null">
+        WLAN_LOC_ONLINE_TIMES,
+      </if>
+      <if test="wlanLocBilledDur != null">
+        WLAN_LOC_BILLED_DUR,
+      </if>
+      <if test="wlanMyAmt != null">
+        WLAN_MY_AMT,
+      </if>
+      <if test="wlanMyTotBytes != null">
+        WLAN_MY_TOT_BYTES,
+      </if>
+      <if test="wlanMyDur != null">
+        WLAN_MY_DUR,
+      </if>
+      <if test="wlanMyOnlineTimes != null">
+        WLAN_MY_ONLINE_TIMES,
+      </if>
+      <if test="wlanMyBilledDur != null">
+        WLAN_MY_BILLED_DUR,
+      </if>
+      <if test="i3gAmt != null">
+        I3G_AMT,
+      </if>
+      <if test="i3gTotBytes != null">
+        I3G_TOT_BYTES,
+      </if>
+      <if test="i3gDur != null">
+        I3G_DUR,
+      </if>
+      <if test="i3gOnlineTimes != null">
+        I3G_ONLINE_TIMES,
+      </if>
+      <if test="i3gBilledDur != null">
+        I3G_BILLED_DUR,
+      </if>
+      <if test="i3gLocAmt != null">
+        I3G_LOC_AMT,
+      </if>
+      <if test="i3gLocTotBytes != null">
+        I3G_LOC_TOT_BYTES,
+      </if>
+      <if test="i3gLocDur != null">
+        I3G_LOC_DUR,
+      </if>
+      <if test="i3gLocOnlineTimes != null">
+        I3G_LOC_ONLINE_TIMES,
+      </if>
+      <if test="i3gLocBilledDur != null">
+        I3G_LOC_BILLED_DUR,
+      </if>
+      <if test="i3gMyAmt != null">
+        I3G_MY_AMT,
+      </if>
+      <if test="i3gMyTotBytes != null">
+        I3G_MY_TOT_BYTES,
+      </if>
+      <if test="i3gMyDur != null">
+        I3G_MY_DUR,
+      </if>
+      <if test="i3gMyOnlineTimes != null">
+        I3G_MY_ONLINE_TIMES,
+      </if>
+      <if test="i3gMyBilledDur != null">
+        I3G_MY_BILLED_DUR,
+      </if>
+      <if test="innerSendSmsAmt != null">
+        INNER_SEND_SMS_AMT,
+      </if>
+      <if test="innerSendSmsTimes != null">
+        INNER_SEND_SMS_TIMES,
+      </if>
+      <if test="interSendSmsAmt != null">
+        INTER_SEND_SMS_AMT,
+      </if>
+      <if test="interSendSmsTimes != null">
+        INTER_SEND_SMS_TIMES,
+      </if>
+      <if test="voiceTimes != null">
+        VOICE_TIMES,
+      </if>
+      <if test="voiceDur != null">
+        VOICE_DUR,
+      </if>
+      <if test="voiceAmt != null">
+        VOICE_AMT,
+      </if>
+      <if test="voiceBilledDur != null">
+        VOICE_BILLED_DUR,
+      </if>
+      <if test="voiceCallingTimes != null">
+        VOICE_CALLING_TIMES,
+      </if>
+      <if test="voiceCallingDur != null">
+        VOICE_CALLING_DUR,
+      </if>
+      <if test="voiceCallingAmt != null">
+        VOICE_CALLING_AMT,
+      </if>
+      <if test="voiceCallingBilledDur != null">
+        VOICE_CALLING_BILLED_DUR,
+      </if>
+      <if test="voiceCalledTimes != null">
+        VOICE_CALLED_TIMES,
+      </if>
+      <if test="voiceCalledDur != null">
+        VOICE_CALLED_DUR,
+      </if>
+      <if test="voiceCalledAmt != null">
+        VOICE_CALLED_AMT,
+      </if>
+      <if test="voiceCalledBilledDur != null">
+        VOICE_CALLED_BILLED_DUR,
+      </if>
+      <if test="locCallingTimes != null">
+        LOC_CALLING_TIMES,
+      </if>
+      <if test="locCallingDur != null">
+        LOC_CALLING_DUR,
+      </if>
+      <if test="locCallingAmt != null">
+        LOC_CALLING_AMT,
+      </if>
+      <if test="locCallingBilledDur != null">
+        LOC_CALLING_BILLED_DUR,
+      </if>
+      <if test="dddCallingTimes != null">
+        DDD_CALLING_TIMES,
+      </if>
+      <if test="dddCallingDur != null">
+        DDD_CALLING_DUR,
+      </if>
+      <if test="dddCallingAmt != null">
+        DDD_CALLING_AMT,
+      </if>
+      <if test="dddCallingBilledDur != null">
+        DDD_CALLING_BILLED_DUR,
+      </if>
+      <if test="iddCallingTimes != null">
+        IDD_CALLING_TIMES,
+      </if>
+      <if test="iddCallingDur != null">
+        IDD_CALLING_DUR,
+      </if>
+      <if test="iddCallingAmt != null">
+        IDD_CALLING_AMT,
+      </if>
+      <if test="iddCallingBilledDur != null">
+        IDD_CALLING_BILLED_DUR,
+      </if>
+      <if test="gatCallingTimes != null">
+        GAT_CALLING_TIMES,
+      </if>
+      <if test="gatCallingDur != null">
+        GAT_CALLING_DUR,
+      </if>
+      <if test="gatCallingAmt != null">
+        GAT_CALLING_AMT,
+      </if>
+      <if test="gatCallingBilledDur != null">
+        GAT_CALLING_BILLED_DUR,
+      </if>
+      <if test="innerMyCallingTimes != null">
+        INNER_MY_CALLING_TIMES,
+      </if>
+      <if test="innerMyCallingDur != null">
+        INNER_MY_CALLING_DUR,
+      </if>
+      <if test="innerMyCallingAmt != null">
+        INNER_MY_CALLING_AMT,
+      </if>
+      <if test="innerMyCallingBilledDur != null">
+        INNER_MY_CALLING_BILLED_DUR,
+      </if>
+      <if test="interMyCallingTimes != null">
+        INTER_MY_CALLING_TIMES,
+      </if>
+      <if test="interMyCallingDur != null">
+        INTER_MY_CALLING_DUR,
+      </if>
+      <if test="interMyCallingAmt != null">
+        INTER_MY_CALLING_AMT,
+      </if>
+      <if test="interMyCallingBilledDur != null">
+        INTER_MY_CALLING_BILLED_DUR,
+      </if>
+      <if test="gatMyCallingTimes != null">
+        GAT_MY_CALLING_TIMES,
+      </if>
+      <if test="gatMyCallingDur != null">
+        GAT_MY_CALLING_DUR,
+      </if>
+      <if test="gatMyCallingAmt != null">
+        GAT_MY_CALLING_AMT,
+      </if>
+      <if test="gatMyCallingBilledDur != null">
+        GAT_MY_CALLING_BILLED_DUR,
+      </if>
+      <if test="locCalledTimes != null">
+        LOC_CALLED_TIMES,
+      </if>
+      <if test="locCalledDur != null">
+        LOC_CALLED_DUR,
+      </if>
+      <if test="locCalledAmt != null">
+        LOC_CALLED_AMT,
+      </if>
+      <if test="locCalledBilledDur != null">
+        LOC_CALLED_BILLED_DUR,
+      </if>
+      <if test="innerMyCalledTimes != null">
+        INNER_MY_CALLED_TIMES,
+      </if>
+      <if test="innerMyCalledDur != null">
+        INNER_MY_CALLED_DUR,
+      </if>
+      <if test="innerMyCalledAmt != null">
+        INNER_MY_CALLED_AMT,
+      </if>
+      <if test="innerMyCalledBilledDur != null">
+        INNER_MY_CALLED_BILLED_DUR,
+      </if>
+      <if test="interMyCalledTimes != null">
+        INTER_MY_CALLED_TIMES,
+      </if>
+      <if test="interMyCalledDur != null">
+        INTER_MY_CALLED_DUR,
+      </if>
+      <if test="interMyCalledAmt != null">
+        INTER_MY_CALLED_AMT,
+      </if>
+      <if test="interMyCalledBilledDur != null">
+        INTER_MY_CALLED_BILLED_DUR,
+      </if>
+      <if test="gatMyCalledTimes != null">
+        GAT_MY_CALLED_TIMES,
+      </if>
+      <if test="gatMyCalledDur != null">
+        GAT_MY_CALLED_DUR,
+      </if>
+      <if test="gatMyCalledAmt != null">
+        GAT_MY_CALLED_AMT,
+      </if>
+      <if test="gatMyCalledBilledDur != null">
+        GAT_MY_CALLED_BILLED_DUR,
+      </if>
+      <if test="prodInstCid != null">
+        PROD_INST_CID,
+      </if>
+      <if test="custCid != null">
+        CUST_CID,
+      </if>
+      <if test="acntCid != null">
+        ACNT_CID,
+      </if>
+      <if test="totalAmt != null">
+        TOTAL_AMT,
+      </if>
+      <if test="totalRentalAmt != null">
+        TOTAL_RENTAL_AMT,
+      </if>
+      <if test="totalUseAmt != null">
+        TOTAL_USE_AMT,
+      </if>
+      <if test="itemDeviceModel != null">
+        ITEM_DEVICE_MODEL,
+      </if>
+      <if test="deviceClass != null">
+        DEVICE_CLASS,
+      </if>
+      <if test="gType != null">
+        G_TYPE,
+      </if>
+      <if test="unitPrice != null">
+        UNIT_PRICE,
+      </if>
+      <if test="ifWap != null">
+        IF_WAP,
+      </if>
+      <if test="ifNet != null">
+        IF_NET,
+      </if>
+      <if test="wapTimes != null">
+        WAP_TIMES,
+      </if>
+      <if test="netTimes != null">
+        NET_TIMES,
+      </if>
+      <if test="wapGrossBytes != null">
+        WAP_GROSS_BYTES,
+      </if>
+      <if test="netGrossBytes != null">
+        NET_GROSS_BYTES,
+      </if>
+      <if test="receive1x != null">
+        RECEIVE_1X,
+      </if>
+      <if test="receive1xM != null">
+        RECEIVE_1X_M,
+      </if>
+      <if test="send1x != null">
+        SEND_1X,
+      </if>
+      <if test="send1xM != null">
+        SEND_1X_M,
+      </if>
+      <if test="receiveEvdo != null">
+        RECEIVE_EVDO,
+      </if>
+      <if test="receiveEvdoM != null">
+        RECEIVE_EVDO_M,
+      </if>
+      <if test="sendEvdo != null">
+        SEND_EVDO,
+      </if>
+      <if test="sendEvdoM != null">
+        SEND_EVDO_M,
+      </if>
+      <if test="receiveWifi != null">
+        RECEIVE_WIFI,
+      </if>
+      <if test="receiveWifiM != null">
+        RECEIVE_WIFI_M,
+      </if>
+      <if test="sendWifi != null">
+        SEND_WIFI,
+      </if>
+      <if test="sendWifiM != null">
+        SEND_WIFI_M,
+      </if>
+      <if test="ifTysxBillFlag != null">
+        IF_TYSX_BILL_FLAG,
+      </if>
+      <if test="ifLiveFlag != null">
+        IF_LIVE_FLAG,
+      </if>
+      <if test="ifQq != null">
+        IF_QQ,
+      </if>
+      <if test="qqDtimes != null">
+        QQ_DTIMES,
+      </if>
+      <if test="mmsTimes != null">
+        MMS_TIMES,
+      </if>
+      <if test="spmmsTimes != null">
+        SPMMS_TIMES,
+      </if>
+      <if test="ifSmsFlag != null">
+        IF_SMS_FLAG,
+      </if>
+      <if test="timesSmsSend != null">
+        TIMES_SMS_SEND,
+      </if>
+      <if test="if189mailActiveFlag != null">
+        IF_189MAIL_ACTIVE_FLAG,
+      </if>
+      <if test="i4gAmt != null">
+        I4G_AMT,
+      </if>
+      <if test="i4gTotBytes != null">
+        I4G_TOT_BYTES,
+      </if>
+      <if test="i4gDur != null">
+        I4G_DUR,
+      </if>
+      <if test="i4gOnlineTimes != null">
+        I4G_ONLINE_TIMES,
+      </if>
+      <if test="i4gBilledDur != null">
+        I4G_BILLED_DUR,
+      </if>
+      <if test="i4gLocAmt != null">
+        I4G_LOC_AMT,
+      </if>
+      <if test="i4gLocTotBytes != null">
+        I4G_LOC_TOT_BYTES,
+      </if>
+      <if test="i4gLocDur != null">
+        I4G_LOC_DUR,
+      </if>
+      <if test="i4gLocOnlineTimes != null">
+        I4G_LOC_ONLINE_TIMES,
+      </if>
+      <if test="i4gLocBilledDur != null">
+        I4G_LOC_BILLED_DUR,
+      </if>
+      <if test="i4gMyAmtIn != null">
+        I4G_MY_AMT_IN,
+      </if>
+      <if test="i4gMyAmtOut != null">
+        I4G_MY_AMT_OUT,
+      </if>
+      <if test="i4gMyTotBytesIn != null">
+        I4G_MY_TOT_BYTES_IN,
+      </if>
+      <if test="i4gMyTotBytesOut != null">
+        I4G_MY_TOT_BYTES_OUT,
+      </if>
+      <if test="i4gMyDurIn != null">
+        I4G_MY_DUR_IN,
+      </if>
+      <if test="i4gMyDurOut != null">
+        I4G_MY_DUR_OUT,
+      </if>
+      <if test="i4gMyOnlineTimesIn != null">
+        I4G_MY_ONLINE_TIMES_IN,
+      </if>
+      <if test="i4gMyOnlineTimesOut != null">
+        I4G_MY_ONLINE_TIMES_OUT,
+      </if>
+      <if test="i4gMyBilledDurIn != null">
+        I4G_MY_BILLED_DUR_IN,
+      </if>
+      <if test="i4gMyBilledDurOut != null">
+        I4G_MY_BILLED_DUR_OUT,
+      </if>
+      <if test="promNum != null">
+        PROM_NUM,
+      </if>
+      <if test="promName != null">
+        PROM_NAME,
+      </if>
+      <if test="salePolicyName != null">
+        SALE_POLICY_NAME,
+      </if>
+      <if test="promStartDt != null">
+        PROM_START_DT,
+      </if>
+      <if test="promEndDt != null">
+        PROM_END_DT,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="dtaDate != null">
+        #{dtaDate,jdbcType=VARCHAR},
+      </if>
+      <if test="prodSpecId != null">
+        #{prodSpecId,jdbcType=INTEGER},
+      </if>
+      <if test="integrationCd != null">
+        #{integrationCd,jdbcType=VARCHAR},
+      </if>
+      <if test="userId != null">
+        #{userId,jdbcType=VARCHAR},
+      </if>
+      <if test="valueAddedAmt != null">
+        #{valueAddedAmt,jdbcType=INTEGER},
+      </if>
+      <if test="cailingAmt != null">
+        #{cailingAmt,jdbcType=INTEGER},
+      </if>
+      <if test="cailingAmount != null">
+        #{cailingAmount,jdbcType=INTEGER},
+      </if>
+      <if test="spSmsAmt != null">
+        #{spSmsAmt,jdbcType=INTEGER},
+      </if>
+      <if test="spSmsAmount != null">
+        #{spSmsAmount,jdbcType=INTEGER},
+      </if>
+      <if test="internetAmt != null">
+        #{internetAmt,jdbcType=INTEGER},
+      </if>
+      <if test="internetTotBytes != null">
+        #{internetTotBytes,jdbcType=BIGINT},
+      </if>
+      <if test="internetDur != null">
+        #{internetDur,jdbcType=INTEGER},
+      </if>
+      <if test="internetOnlineTimes != null">
+        #{internetOnlineTimes,jdbcType=INTEGER},
+      </if>
+      <if test="internetBilledDur != null">
+        #{internetBilledDur,jdbcType=INTEGER},
+      </if>
+      <if test="i1xAmt != null">
+        #{i1xAmt,jdbcType=INTEGER},
+      </if>
+      <if test="i1xTotBytes != null">
+        #{i1xTotBytes,jdbcType=BIGINT},
+      </if>
+      <if test="i1xDur != null">
+        #{i1xDur,jdbcType=INTEGER},
+      </if>
+      <if test="i1xOnlineTimes != null">
+        #{i1xOnlineTimes,jdbcType=INTEGER},
+      </if>
+      <if test="i1xBilledDur != null">
+        #{i1xBilledDur,jdbcType=INTEGER},
+      </if>
+      <if test="i1xLocAmt != null">
+        #{i1xLocAmt,jdbcType=INTEGER},
+      </if>
+      <if test="i1xLocTotBytes != null">
+        #{i1xLocTotBytes,jdbcType=BIGINT},
+      </if>
+      <if test="i1xLocDur != null">
+        #{i1xLocDur,jdbcType=INTEGER},
+      </if>
+      <if test="i1xLocOnlineTimes != null">
+        #{i1xLocOnlineTimes,jdbcType=INTEGER},
+      </if>
+      <if test="i1xLocBilledDur != null">
+        #{i1xLocBilledDur,jdbcType=INTEGER},
+      </if>
+      <if test="i1xMyAmt != null">
+        #{i1xMyAmt,jdbcType=INTEGER},
+      </if>
+      <if test="i1xMyTotBytes != null">
+        #{i1xMyTotBytes,jdbcType=BIGINT},
+      </if>
+      <if test="i1xMyDur != null">
+        #{i1xMyDur,jdbcType=INTEGER},
+      </if>
+      <if test="i1xMyOnlineTimes != null">
+        #{i1xMyOnlineTimes,jdbcType=INTEGER},
+      </if>
+      <if test="i1xMyBilledDur != null">
+        #{i1xMyBilledDur,jdbcType=INTEGER},
+      </if>
+      <if test="wlanAmt != null">
+        #{wlanAmt,jdbcType=INTEGER},
+      </if>
+      <if test="wlanTotBytes != null">
+        #{wlanTotBytes,jdbcType=BIGINT},
+      </if>
+      <if test="wlanDur != null">
+        #{wlanDur,jdbcType=INTEGER},
+      </if>
+      <if test="wlanOnlineTimes != null">
+        #{wlanOnlineTimes,jdbcType=INTEGER},
+      </if>
+      <if test="wlanBilledDur != null">
+        #{wlanBilledDur,jdbcType=INTEGER},
+      </if>
+      <if test="wlanLocAmt != null">
+        #{wlanLocAmt,jdbcType=INTEGER},
+      </if>
+      <if test="wlanLocTotBytes != null">
+        #{wlanLocTotBytes,jdbcType=BIGINT},
+      </if>
+      <if test="wlanLocDur != null">
+        #{wlanLocDur,jdbcType=INTEGER},
+      </if>
+      <if test="wlanLocOnlineTimes != null">
+        #{wlanLocOnlineTimes,jdbcType=INTEGER},
+      </if>
+      <if test="wlanLocBilledDur != null">
+        #{wlanLocBilledDur,jdbcType=INTEGER},
+      </if>
+      <if test="wlanMyAmt != null">
+        #{wlanMyAmt,jdbcType=INTEGER},
+      </if>
+      <if test="wlanMyTotBytes != null">
+        #{wlanMyTotBytes,jdbcType=BIGINT},
+      </if>
+      <if test="wlanMyDur != null">
+        #{wlanMyDur,jdbcType=INTEGER},
+      </if>
+      <if test="wlanMyOnlineTimes != null">
+        #{wlanMyOnlineTimes,jdbcType=INTEGER},
+      </if>
+      <if test="wlanMyBilledDur != null">
+        #{wlanMyBilledDur,jdbcType=INTEGER},
+      </if>
+      <if test="i3gAmt != null">
+        #{i3gAmt,jdbcType=INTEGER},
+      </if>
+      <if test="i3gTotBytes != null">
+        #{i3gTotBytes,jdbcType=BIGINT},
+      </if>
+      <if test="i3gDur != null">
+        #{i3gDur,jdbcType=INTEGER},
+      </if>
+      <if test="i3gOnlineTimes != null">
+        #{i3gOnlineTimes,jdbcType=INTEGER},
+      </if>
+      <if test="i3gBilledDur != null">
+        #{i3gBilledDur,jdbcType=INTEGER},
+      </if>
+      <if test="i3gLocAmt != null">
+        #{i3gLocAmt,jdbcType=INTEGER},
+      </if>
+      <if test="i3gLocTotBytes != null">
+        #{i3gLocTotBytes,jdbcType=BIGINT},
+      </if>
+      <if test="i3gLocDur != null">
+        #{i3gLocDur,jdbcType=INTEGER},
+      </if>
+      <if test="i3gLocOnlineTimes != null">
+        #{i3gLocOnlineTimes,jdbcType=INTEGER},
+      </if>
+      <if test="i3gLocBilledDur != null">
+        #{i3gLocBilledDur,jdbcType=INTEGER},
+      </if>
+      <if test="i3gMyAmt != null">
+        #{i3gMyAmt,jdbcType=INTEGER},
+      </if>
+      <if test="i3gMyTotBytes != null">
+        #{i3gMyTotBytes,jdbcType=BIGINT},
+      </if>
+      <if test="i3gMyDur != null">
+        #{i3gMyDur,jdbcType=INTEGER},
+      </if>
+      <if test="i3gMyOnlineTimes != null">
+        #{i3gMyOnlineTimes,jdbcType=INTEGER},
+      </if>
+      <if test="i3gMyBilledDur != null">
+        #{i3gMyBilledDur,jdbcType=INTEGER},
+      </if>
+      <if test="innerSendSmsAmt != null">
+        #{innerSendSmsAmt,jdbcType=INTEGER},
+      </if>
+      <if test="innerSendSmsTimes != null">
+        #{innerSendSmsTimes,jdbcType=INTEGER},
+      </if>
+      <if test="interSendSmsAmt != null">
+        #{interSendSmsAmt,jdbcType=INTEGER},
+      </if>
+      <if test="interSendSmsTimes != null">
+        #{interSendSmsTimes,jdbcType=INTEGER},
+      </if>
+      <if test="voiceTimes != null">
+        #{voiceTimes,jdbcType=INTEGER},
+      </if>
+      <if test="voiceDur != null">
+        #{voiceDur,jdbcType=INTEGER},
+      </if>
+      <if test="voiceAmt != null">
+        #{voiceAmt,jdbcType=INTEGER},
+      </if>
+      <if test="voiceBilledDur != null">
+        #{voiceBilledDur,jdbcType=INTEGER},
+      </if>
+      <if test="voiceCallingTimes != null">
+        #{voiceCallingTimes,jdbcType=INTEGER},
+      </if>
+      <if test="voiceCallingDur != null">
+        #{voiceCallingDur,jdbcType=INTEGER},
+      </if>
+      <if test="voiceCallingAmt != null">
+        #{voiceCallingAmt,jdbcType=INTEGER},
+      </if>
+      <if test="voiceCallingBilledDur != null">
+        #{voiceCallingBilledDur,jdbcType=INTEGER},
+      </if>
+      <if test="voiceCalledTimes != null">
+        #{voiceCalledTimes,jdbcType=INTEGER},
+      </if>
+      <if test="voiceCalledDur != null">
+        #{voiceCalledDur,jdbcType=INTEGER},
+      </if>
+      <if test="voiceCalledAmt != null">
+        #{voiceCalledAmt,jdbcType=INTEGER},
+      </if>
+      <if test="voiceCalledBilledDur != null">
+        #{voiceCalledBilledDur,jdbcType=INTEGER},
+      </if>
+      <if test="locCallingTimes != null">
+        #{locCallingTimes,jdbcType=INTEGER},
+      </if>
+      <if test="locCallingDur != null">
+        #{locCallingDur,jdbcType=INTEGER},
+      </if>
+      <if test="locCallingAmt != null">
+        #{locCallingAmt,jdbcType=INTEGER},
+      </if>
+      <if test="locCallingBilledDur != null">
+        #{locCallingBilledDur,jdbcType=INTEGER},
+      </if>
+      <if test="dddCallingTimes != null">
+        #{dddCallingTimes,jdbcType=INTEGER},
+      </if>
+      <if test="dddCallingDur != null">
+        #{dddCallingDur,jdbcType=INTEGER},
+      </if>
+      <if test="dddCallingAmt != null">
+        #{dddCallingAmt,jdbcType=INTEGER},
+      </if>
+      <if test="dddCallingBilledDur != null">
+        #{dddCallingBilledDur,jdbcType=INTEGER},
+      </if>
+      <if test="iddCallingTimes != null">
+        #{iddCallingTimes,jdbcType=INTEGER},
+      </if>
+      <if test="iddCallingDur != null">
+        #{iddCallingDur,jdbcType=INTEGER},
+      </if>
+      <if test="iddCallingAmt != null">
+        #{iddCallingAmt,jdbcType=INTEGER},
+      </if>
+      <if test="iddCallingBilledDur != null">
+        #{iddCallingBilledDur,jdbcType=INTEGER},
+      </if>
+      <if test="gatCallingTimes != null">
+        #{gatCallingTimes,jdbcType=INTEGER},
+      </if>
+      <if test="gatCallingDur != null">
+        #{gatCallingDur,jdbcType=INTEGER},
+      </if>
+      <if test="gatCallingAmt != null">
+        #{gatCallingAmt,jdbcType=INTEGER},
+      </if>
+      <if test="gatCallingBilledDur != null">
+        #{gatCallingBilledDur,jdbcType=INTEGER},
+      </if>
+      <if test="innerMyCallingTimes != null">
+        #{innerMyCallingTimes,jdbcType=INTEGER},
+      </if>
+      <if test="innerMyCallingDur != null">
+        #{innerMyCallingDur,jdbcType=INTEGER},
+      </if>
+      <if test="innerMyCallingAmt != null">
+        #{innerMyCallingAmt,jdbcType=INTEGER},
+      </if>
+      <if test="innerMyCallingBilledDur != null">
+        #{innerMyCallingBilledDur,jdbcType=INTEGER},
+      </if>
+      <if test="interMyCallingTimes != null">
+        #{interMyCallingTimes,jdbcType=INTEGER},
+      </if>
+      <if test="interMyCallingDur != null">
+        #{interMyCallingDur,jdbcType=INTEGER},
+      </if>
+      <if test="interMyCallingAmt != null">
+        #{interMyCallingAmt,jdbcType=INTEGER},
+      </if>
+      <if test="interMyCallingBilledDur != null">
+        #{interMyCallingBilledDur,jdbcType=INTEGER},
+      </if>
+      <if test="gatMyCallingTimes != null">
+        #{gatMyCallingTimes,jdbcType=INTEGER},
+      </if>
+      <if test="gatMyCallingDur != null">
+        #{gatMyCallingDur,jdbcType=INTEGER},
+      </if>
+      <if test="gatMyCallingAmt != null">
+        #{gatMyCallingAmt,jdbcType=INTEGER},
+      </if>
+      <if test="gatMyCallingBilledDur != null">
+        #{gatMyCallingBilledDur,jdbcType=INTEGER},
+      </if>
+      <if test="locCalledTimes != null">
+        #{locCalledTimes,jdbcType=INTEGER},
+      </if>
+      <if test="locCalledDur != null">
+        #{locCalledDur,jdbcType=INTEGER},
+      </if>
+      <if test="locCalledAmt != null">
+        #{locCalledAmt,jdbcType=INTEGER},
+      </if>
+      <if test="locCalledBilledDur != null">
+        #{locCalledBilledDur,jdbcType=INTEGER},
+      </if>
+      <if test="innerMyCalledTimes != null">
+        #{innerMyCalledTimes,jdbcType=INTEGER},
+      </if>
+      <if test="innerMyCalledDur != null">
+        #{innerMyCalledDur,jdbcType=INTEGER},
+      </if>
+      <if test="innerMyCalledAmt != null">
+        #{innerMyCalledAmt,jdbcType=INTEGER},
+      </if>
+      <if test="innerMyCalledBilledDur != null">
+        #{innerMyCalledBilledDur,jdbcType=INTEGER},
+      </if>
+      <if test="interMyCalledTimes != null">
+        #{interMyCalledTimes,jdbcType=INTEGER},
+      </if>
+      <if test="interMyCalledDur != null">
+        #{interMyCalledDur,jdbcType=INTEGER},
+      </if>
+      <if test="interMyCalledAmt != null">
+        #{interMyCalledAmt,jdbcType=INTEGER},
+      </if>
+      <if test="interMyCalledBilledDur != null">
+        #{interMyCalledBilledDur,jdbcType=INTEGER},
+      </if>
+      <if test="gatMyCalledTimes != null">
+        #{gatMyCalledTimes,jdbcType=INTEGER},
+      </if>
+      <if test="gatMyCalledDur != null">
+        #{gatMyCalledDur,jdbcType=INTEGER},
+      </if>
+      <if test="gatMyCalledAmt != null">
+        #{gatMyCalledAmt,jdbcType=INTEGER},
+      </if>
+      <if test="gatMyCalledBilledDur != null">
+        #{gatMyCalledBilledDur,jdbcType=INTEGER},
+      </if>
+      <if test="prodInstCid != null">
+        #{prodInstCid,jdbcType=VARCHAR},
+      </if>
+      <if test="custCid != null">
+        #{custCid,jdbcType=VARCHAR},
+      </if>
+      <if test="acntCid != null">
+        #{acntCid,jdbcType=VARCHAR},
+      </if>
+      <if test="totalAmt != null">
+        #{totalAmt,jdbcType=INTEGER},
+      </if>
+      <if test="totalRentalAmt != null">
+        #{totalRentalAmt,jdbcType=INTEGER},
+      </if>
+      <if test="totalUseAmt != null">
+        #{totalUseAmt,jdbcType=INTEGER},
+      </if>
+      <if test="itemDeviceModel != null">
+        #{itemDeviceModel,jdbcType=VARCHAR},
+      </if>
+      <if test="deviceClass != null">
+        #{deviceClass,jdbcType=VARCHAR},
+      </if>
+      <if test="gType != null">
+        #{gType,jdbcType=VARCHAR},
+      </if>
+      <if test="unitPrice != null">
+        #{unitPrice,jdbcType=INTEGER},
+      </if>
+      <if test="ifWap != null">
+        #{ifWap,jdbcType=INTEGER},
+      </if>
+      <if test="ifNet != null">
+        #{ifNet,jdbcType=INTEGER},
+      </if>
+      <if test="wapTimes != null">
+        #{wapTimes,jdbcType=INTEGER},
+      </if>
+      <if test="netTimes != null">
+        #{netTimes,jdbcType=INTEGER},
+      </if>
+      <if test="wapGrossBytes != null">
+        #{wapGrossBytes,jdbcType=BIGINT},
+      </if>
+      <if test="netGrossBytes != null">
+        #{netGrossBytes,jdbcType=BIGINT},
+      </if>
+      <if test="receive1x != null">
+        #{receive1x,jdbcType=INTEGER},
+      </if>
+      <if test="receive1xM != null">
+        #{receive1xM,jdbcType=INTEGER},
+      </if>
+      <if test="send1x != null">
+        #{send1x,jdbcType=BIGINT},
+      </if>
+      <if test="send1xM != null">
+        #{send1xM,jdbcType=INTEGER},
+      </if>
+      <if test="receiveEvdo != null">
+        #{receiveEvdo,jdbcType=BIGINT},
+      </if>
+      <if test="receiveEvdoM != null">
+        #{receiveEvdoM,jdbcType=BIGINT},
+      </if>
+      <if test="sendEvdo != null">
+        #{sendEvdo,jdbcType=BIGINT},
+      </if>
+      <if test="sendEvdoM != null">
+        #{sendEvdoM,jdbcType=BIGINT},
+      </if>
+      <if test="receiveWifi != null">
+        #{receiveWifi,jdbcType=INTEGER},
+      </if>
+      <if test="receiveWifiM != null">
+        #{receiveWifiM,jdbcType=INTEGER},
+      </if>
+      <if test="sendWifi != null">
+        #{sendWifi,jdbcType=BIGINT},
+      </if>
+      <if test="sendWifiM != null">
+        #{sendWifiM,jdbcType=BIGINT},
+      </if>
+      <if test="ifTysxBillFlag != null">
+        #{ifTysxBillFlag,jdbcType=INTEGER},
+      </if>
+      <if test="ifLiveFlag != null">
+        #{ifLiveFlag,jdbcType=INTEGER},
+      </if>
+      <if test="ifQq != null">
+        #{ifQq,jdbcType=INTEGER},
+      </if>
+      <if test="qqDtimes != null">
+        #{qqDtimes,jdbcType=INTEGER},
+      </if>
+      <if test="mmsTimes != null">
+        #{mmsTimes,jdbcType=INTEGER},
+      </if>
+      <if test="spmmsTimes != null">
+        #{spmmsTimes,jdbcType=INTEGER},
+      </if>
+      <if test="ifSmsFlag != null">
+        #{ifSmsFlag,jdbcType=INTEGER},
+      </if>
+      <if test="timesSmsSend != null">
+        #{timesSmsSend,jdbcType=INTEGER},
+      </if>
+      <if test="if189mailActiveFlag != null">
+        #{if189mailActiveFlag,jdbcType=INTEGER},
+      </if>
+      <if test="i4gAmt != null">
+        #{i4gAmt,jdbcType=INTEGER},
+      </if>
+      <if test="i4gTotBytes != null">
+        #{i4gTotBytes,jdbcType=BIGINT},
+      </if>
+      <if test="i4gDur != null">
+        #{i4gDur,jdbcType=INTEGER},
+      </if>
+      <if test="i4gOnlineTimes != null">
+        #{i4gOnlineTimes,jdbcType=INTEGER},
+      </if>
+      <if test="i4gBilledDur != null">
+        #{i4gBilledDur,jdbcType=INTEGER},
+      </if>
+      <if test="i4gLocAmt != null">
+        #{i4gLocAmt,jdbcType=INTEGER},
+      </if>
+      <if test="i4gLocTotBytes != null">
+        #{i4gLocTotBytes,jdbcType=BIGINT},
+      </if>
+      <if test="i4gLocDur != null">
+        #{i4gLocDur,jdbcType=INTEGER},
+      </if>
+      <if test="i4gLocOnlineTimes != null">
+        #{i4gLocOnlineTimes,jdbcType=INTEGER},
+      </if>
+      <if test="i4gLocBilledDur != null">
+        #{i4gLocBilledDur,jdbcType=INTEGER},
+      </if>
+      <if test="i4gMyAmtIn != null">
+        #{i4gMyAmtIn,jdbcType=BIGINT},
+      </if>
+      <if test="i4gMyAmtOut != null">
+        #{i4gMyAmtOut,jdbcType=INTEGER},
+      </if>
+      <if test="i4gMyTotBytesIn != null">
+        #{i4gMyTotBytesIn,jdbcType=BIGINT},
+      </if>
+      <if test="i4gMyTotBytesOut != null">
+        #{i4gMyTotBytesOut,jdbcType=INTEGER},
+      </if>
+      <if test="i4gMyDurIn != null">
+        #{i4gMyDurIn,jdbcType=INTEGER},
+      </if>
+      <if test="i4gMyDurOut != null">
+        #{i4gMyDurOut,jdbcType=INTEGER},
+      </if>
+      <if test="i4gMyOnlineTimesIn != null">
+        #{i4gMyOnlineTimesIn,jdbcType=INTEGER},
+      </if>
+      <if test="i4gMyOnlineTimesOut != null">
+        #{i4gMyOnlineTimesOut,jdbcType=INTEGER},
+      </if>
+      <if test="i4gMyBilledDurIn != null">
+        #{i4gMyBilledDurIn,jdbcType=INTEGER},
+      </if>
+      <if test="i4gMyBilledDurOut != null">
+        #{i4gMyBilledDurOut,jdbcType=INTEGER},
+      </if>
+      <if test="promNum != null">
+        #{promNum,jdbcType=VARCHAR},
+      </if>
+      <if test="promName != null">
+        #{promName,jdbcType=VARCHAR},
+      </if>
+      <if test="salePolicyName != null">
+        #{salePolicyName,jdbcType=VARCHAR},
+      </if>
+      <if test="promStartDt != null">
+        #{promStartDt,jdbcType=VARCHAR},
+      </if>
+      <if test="promEndDt != null">
+        #{promEndDt,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.aby.record.model.Record">
+    update cdma
+    <set>
+      <if test="dtaDate != null">
+        DTA_DATE = #{dtaDate,jdbcType=VARCHAR},
+      </if>
+      <if test="prodSpecId != null">
+        PROD_SPEC_ID = #{prodSpecId,jdbcType=INTEGER},
+      </if>
+      <if test="integrationCd != null">
+        INTEGRATION_CD = #{integrationCd,jdbcType=VARCHAR},
+      </if>
+      <if test="userId != null">
+        USER_ID = #{userId,jdbcType=VARCHAR},
+      </if>
+      <if test="valueAddedAmt != null">
+        VALUE_ADDED_AMT = #{valueAddedAmt,jdbcType=INTEGER},
+      </if>
+      <if test="cailingAmt != null">
+        CAILING_AMT = #{cailingAmt,jdbcType=INTEGER},
+      </if>
+      <if test="cailingAmount != null">
+        CAILING_AMOUNT = #{cailingAmount,jdbcType=INTEGER},
+      </if>
+      <if test="spSmsAmt != null">
+        SP_SMS_AMT = #{spSmsAmt,jdbcType=INTEGER},
+      </if>
+      <if test="spSmsAmount != null">
+        SP_SMS_AMOUNT = #{spSmsAmount,jdbcType=INTEGER},
+      </if>
+      <if test="internetAmt != null">
+        INTERNET_AMT = #{internetAmt,jdbcType=INTEGER},
+      </if>
+      <if test="internetTotBytes != null">
+        INTERNET_TOT_BYTES = #{internetTotBytes,jdbcType=BIGINT},
+      </if>
+      <if test="internetDur != null">
+        INTERNET_DUR = #{internetDur,jdbcType=INTEGER},
+      </if>
+      <if test="internetOnlineTimes != null">
+        INTERNET_ONLINE_TIMES = #{internetOnlineTimes,jdbcType=INTEGER},
+      </if>
+      <if test="internetBilledDur != null">
+        INTERNET_BILLED_DUR = #{internetBilledDur,jdbcType=INTEGER},
+      </if>
+      <if test="i1xAmt != null">
+        I1X_AMT = #{i1xAmt,jdbcType=INTEGER},
+      </if>
+      <if test="i1xTotBytes != null">
+        I1X_TOT_BYTES = #{i1xTotBytes,jdbcType=BIGINT},
+      </if>
+      <if test="i1xDur != null">
+        I1X_DUR = #{i1xDur,jdbcType=INTEGER},
+      </if>
+      <if test="i1xOnlineTimes != null">
+        I1X_ONLINE_TIMES = #{i1xOnlineTimes,jdbcType=INTEGER},
+      </if>
+      <if test="i1xBilledDur != null">
+        I1X_BILLED_DUR = #{i1xBilledDur,jdbcType=INTEGER},
+      </if>
+      <if test="i1xLocAmt != null">
+        I1X_LOC_AMT = #{i1xLocAmt,jdbcType=INTEGER},
+      </if>
+      <if test="i1xLocTotBytes != null">
+        I1X_LOC_TOT_BYTES = #{i1xLocTotBytes,jdbcType=BIGINT},
+      </if>
+      <if test="i1xLocDur != null">
+        I1X_LOC_DUR = #{i1xLocDur,jdbcType=INTEGER},
+      </if>
+      <if test="i1xLocOnlineTimes != null">
+        I1X_LOC_ONLINE_TIMES = #{i1xLocOnlineTimes,jdbcType=INTEGER},
+      </if>
+      <if test="i1xLocBilledDur != null">
+        I1X_LOC_BILLED_DUR = #{i1xLocBilledDur,jdbcType=INTEGER},
+      </if>
+      <if test="i1xMyAmt != null">
+        I1X_MY_AMT = #{i1xMyAmt,jdbcType=INTEGER},
+      </if>
+      <if test="i1xMyTotBytes != null">
+        I1X_MY_TOT_BYTES = #{i1xMyTotBytes,jdbcType=BIGINT},
+      </if>
+      <if test="i1xMyDur != null">
+        I1X_MY_DUR = #{i1xMyDur,jdbcType=INTEGER},
+      </if>
+      <if test="i1xMyOnlineTimes != null">
+        I1X_MY_ONLINE_TIMES = #{i1xMyOnlineTimes,jdbcType=INTEGER},
+      </if>
+      <if test="i1xMyBilledDur != null">
+        I1X_MY_BILLED_DUR = #{i1xMyBilledDur,jdbcType=INTEGER},
+      </if>
+      <if test="wlanAmt != null">
+        WLAN_AMT = #{wlanAmt,jdbcType=INTEGER},
+      </if>
+      <if test="wlanTotBytes != null">
+        WLAN_TOT_BYTES = #{wlanTotBytes,jdbcType=BIGINT},
+      </if>
+      <if test="wlanDur != null">
+        WLAN_DUR = #{wlanDur,jdbcType=INTEGER},
+      </if>
+      <if test="wlanOnlineTimes != null">
+        WLAN_ONLINE_TIMES = #{wlanOnlineTimes,jdbcType=INTEGER},
+      </if>
+      <if test="wlanBilledDur != null">
+        WLAN_BILLED_DUR = #{wlanBilledDur,jdbcType=INTEGER},
+      </if>
+      <if test="wlanLocAmt != null">
+        WLAN_LOC_AMT = #{wlanLocAmt,jdbcType=INTEGER},
+      </if>
+      <if test="wlanLocTotBytes != null">
+        WLAN_LOC_TOT_BYTES = #{wlanLocTotBytes,jdbcType=BIGINT},
+      </if>
+      <if test="wlanLocDur != null">
+        WLAN_LOC_DUR = #{wlanLocDur,jdbcType=INTEGER},
+      </if>
+      <if test="wlanLocOnlineTimes != null">
+        WLAN_LOC_ONLINE_TIMES = #{wlanLocOnlineTimes,jdbcType=INTEGER},
+      </if>
+      <if test="wlanLocBilledDur != null">
+        WLAN_LOC_BILLED_DUR = #{wlanLocBilledDur,jdbcType=INTEGER},
+      </if>
+      <if test="wlanMyAmt != null">
+        WLAN_MY_AMT = #{wlanMyAmt,jdbcType=INTEGER},
+      </if>
+      <if test="wlanMyTotBytes != null">
+        WLAN_MY_TOT_BYTES = #{wlanMyTotBytes,jdbcType=BIGINT},
+      </if>
+      <if test="wlanMyDur != null">
+        WLAN_MY_DUR = #{wlanMyDur,jdbcType=INTEGER},
+      </if>
+      <if test="wlanMyOnlineTimes != null">
+        WLAN_MY_ONLINE_TIMES = #{wlanMyOnlineTimes,jdbcType=INTEGER},
+      </if>
+      <if test="wlanMyBilledDur != null">
+        WLAN_MY_BILLED_DUR = #{wlanMyBilledDur,jdbcType=INTEGER},
+      </if>
+      <if test="i3gAmt != null">
+        I3G_AMT = #{i3gAmt,jdbcType=INTEGER},
+      </if>
+      <if test="i3gTotBytes != null">
+        I3G_TOT_BYTES = #{i3gTotBytes,jdbcType=BIGINT},
+      </if>
+      <if test="i3gDur != null">
+        I3G_DUR = #{i3gDur,jdbcType=INTEGER},
+      </if>
+      <if test="i3gOnlineTimes != null">
+        I3G_ONLINE_TIMES = #{i3gOnlineTimes,jdbcType=INTEGER},
+      </if>
+      <if test="i3gBilledDur != null">
+        I3G_BILLED_DUR = #{i3gBilledDur,jdbcType=INTEGER},
+      </if>
+      <if test="i3gLocAmt != null">
+        I3G_LOC_AMT = #{i3gLocAmt,jdbcType=INTEGER},
+      </if>
+      <if test="i3gLocTotBytes != null">
+        I3G_LOC_TOT_BYTES = #{i3gLocTotBytes,jdbcType=BIGINT},
+      </if>
+      <if test="i3gLocDur != null">
+        I3G_LOC_DUR = #{i3gLocDur,jdbcType=INTEGER},
+      </if>
+      <if test="i3gLocOnlineTimes != null">
+        I3G_LOC_ONLINE_TIMES = #{i3gLocOnlineTimes,jdbcType=INTEGER},
+      </if>
+      <if test="i3gLocBilledDur != null">
+        I3G_LOC_BILLED_DUR = #{i3gLocBilledDur,jdbcType=INTEGER},
+      </if>
+      <if test="i3gMyAmt != null">
+        I3G_MY_AMT = #{i3gMyAmt,jdbcType=INTEGER},
+      </if>
+      <if test="i3gMyTotBytes != null">
+        I3G_MY_TOT_BYTES = #{i3gMyTotBytes,jdbcType=BIGINT},
+      </if>
+      <if test="i3gMyDur != null">
+        I3G_MY_DUR = #{i3gMyDur,jdbcType=INTEGER},
+      </if>
+      <if test="i3gMyOnlineTimes != null">
+        I3G_MY_ONLINE_TIMES = #{i3gMyOnlineTimes,jdbcType=INTEGER},
+      </if>
+      <if test="i3gMyBilledDur != null">
+        I3G_MY_BILLED_DUR = #{i3gMyBilledDur,jdbcType=INTEGER},
+      </if>
+      <if test="innerSendSmsAmt != null">
+        INNER_SEND_SMS_AMT = #{innerSendSmsAmt,jdbcType=INTEGER},
+      </if>
+      <if test="innerSendSmsTimes != null">
+        INNER_SEND_SMS_TIMES = #{innerSendSmsTimes,jdbcType=INTEGER},
+      </if>
+      <if test="interSendSmsAmt != null">
+        INTER_SEND_SMS_AMT = #{interSendSmsAmt,jdbcType=INTEGER},
+      </if>
+      <if test="interSendSmsTimes != null">
+        INTER_SEND_SMS_TIMES = #{interSendSmsTimes,jdbcType=INTEGER},
+      </if>
+      <if test="voiceTimes != null">
+        VOICE_TIMES = #{voiceTimes,jdbcType=INTEGER},
+      </if>
+      <if test="voiceDur != null">
+        VOICE_DUR = #{voiceDur,jdbcType=INTEGER},
+      </if>
+      <if test="voiceAmt != null">
+        VOICE_AMT = #{voiceAmt,jdbcType=INTEGER},
+      </if>
+      <if test="voiceBilledDur != null">
+        VOICE_BILLED_DUR = #{voiceBilledDur,jdbcType=INTEGER},
+      </if>
+      <if test="voiceCallingTimes != null">
+        VOICE_CALLING_TIMES = #{voiceCallingTimes,jdbcType=INTEGER},
+      </if>
+      <if test="voiceCallingDur != null">
+        VOICE_CALLING_DUR = #{voiceCallingDur,jdbcType=INTEGER},
+      </if>
+      <if test="voiceCallingAmt != null">
+        VOICE_CALLING_AMT = #{voiceCallingAmt,jdbcType=INTEGER},
+      </if>
+      <if test="voiceCallingBilledDur != null">
+        VOICE_CALLING_BILLED_DUR = #{voiceCallingBilledDur,jdbcType=INTEGER},
+      </if>
+      <if test="voiceCalledTimes != null">
+        VOICE_CALLED_TIMES = #{voiceCalledTimes,jdbcType=INTEGER},
+      </if>
+      <if test="voiceCalledDur != null">
+        VOICE_CALLED_DUR = #{voiceCalledDur,jdbcType=INTEGER},
+      </if>
+      <if test="voiceCalledAmt != null">
+        VOICE_CALLED_AMT = #{voiceCalledAmt,jdbcType=INTEGER},
+      </if>
+      <if test="voiceCalledBilledDur != null">
+        VOICE_CALLED_BILLED_DUR = #{voiceCalledBilledDur,jdbcType=INTEGER},
+      </if>
+      <if test="locCallingTimes != null">
+        LOC_CALLING_TIMES = #{locCallingTimes,jdbcType=INTEGER},
+      </if>
+      <if test="locCallingDur != null">
+        LOC_CALLING_DUR = #{locCallingDur,jdbcType=INTEGER},
+      </if>
+      <if test="locCallingAmt != null">
+        LOC_CALLING_AMT = #{locCallingAmt,jdbcType=INTEGER},
+      </if>
+      <if test="locCallingBilledDur != null">
+        LOC_CALLING_BILLED_DUR = #{locCallingBilledDur,jdbcType=INTEGER},
+      </if>
+      <if test="dddCallingTimes != null">
+        DDD_CALLING_TIMES = #{dddCallingTimes,jdbcType=INTEGER},
+      </if>
+      <if test="dddCallingDur != null">
+        DDD_CALLING_DUR = #{dddCallingDur,jdbcType=INTEGER},
+      </if>
+      <if test="dddCallingAmt != null">
+        DDD_CALLING_AMT = #{dddCallingAmt,jdbcType=INTEGER},
+      </if>
+      <if test="dddCallingBilledDur != null">
+        DDD_CALLING_BILLED_DUR = #{dddCallingBilledDur,jdbcType=INTEGER},
+      </if>
+      <if test="iddCallingTimes != null">
+        IDD_CALLING_TIMES = #{iddCallingTimes,jdbcType=INTEGER},
+      </if>
+      <if test="iddCallingDur != null">
+        IDD_CALLING_DUR = #{iddCallingDur,jdbcType=INTEGER},
+      </if>
+      <if test="iddCallingAmt != null">
+        IDD_CALLING_AMT = #{iddCallingAmt,jdbcType=INTEGER},
+      </if>
+      <if test="iddCallingBilledDur != null">
+        IDD_CALLING_BILLED_DUR = #{iddCallingBilledDur,jdbcType=INTEGER},
+      </if>
+      <if test="gatCallingTimes != null">
+        GAT_CALLING_TIMES = #{gatCallingTimes,jdbcType=INTEGER},
+      </if>
+      <if test="gatCallingDur != null">
+        GAT_CALLING_DUR = #{gatCallingDur,jdbcType=INTEGER},
+      </if>
+      <if test="gatCallingAmt != null">
+        GAT_CALLING_AMT = #{gatCallingAmt,jdbcType=INTEGER},
+      </if>
+      <if test="gatCallingBilledDur != null">
+        GAT_CALLING_BILLED_DUR = #{gatCallingBilledDur,jdbcType=INTEGER},
+      </if>
+      <if test="innerMyCallingTimes != null">
+        INNER_MY_CALLING_TIMES = #{innerMyCallingTimes,jdbcType=INTEGER},
+      </if>
+      <if test="innerMyCallingDur != null">
+        INNER_MY_CALLING_DUR = #{innerMyCallingDur,jdbcType=INTEGER},
+      </if>
+      <if test="innerMyCallingAmt != null">
+        INNER_MY_CALLING_AMT = #{innerMyCallingAmt,jdbcType=INTEGER},
+      </if>
+      <if test="innerMyCallingBilledDur != null">
+        INNER_MY_CALLING_BILLED_DUR = #{innerMyCallingBilledDur,jdbcType=INTEGER},
+      </if>
+      <if test="interMyCallingTimes != null">
+        INTER_MY_CALLING_TIMES = #{interMyCallingTimes,jdbcType=INTEGER},
+      </if>
+      <if test="interMyCallingDur != null">
+        INTER_MY_CALLING_DUR = #{interMyCallingDur,jdbcType=INTEGER},
+      </if>
+      <if test="interMyCallingAmt != null">
+        INTER_MY_CALLING_AMT = #{interMyCallingAmt,jdbcType=INTEGER},
+      </if>
+      <if test="interMyCallingBilledDur != null">
+        INTER_MY_CALLING_BILLED_DUR = #{interMyCallingBilledDur,jdbcType=INTEGER},
+      </if>
+      <if test="gatMyCallingTimes != null">
+        GAT_MY_CALLING_TIMES = #{gatMyCallingTimes,jdbcType=INTEGER},
+      </if>
+      <if test="gatMyCallingDur != null">
+        GAT_MY_CALLING_DUR = #{gatMyCallingDur,jdbcType=INTEGER},
+      </if>
+      <if test="gatMyCallingAmt != null">
+        GAT_MY_CALLING_AMT = #{gatMyCallingAmt,jdbcType=INTEGER},
+      </if>
+      <if test="gatMyCallingBilledDur != null">
+        GAT_MY_CALLING_BILLED_DUR = #{gatMyCallingBilledDur,jdbcType=INTEGER},
+      </if>
+      <if test="locCalledTimes != null">
+        LOC_CALLED_TIMES = #{locCalledTimes,jdbcType=INTEGER},
+      </if>
+      <if test="locCalledDur != null">
+        LOC_CALLED_DUR = #{locCalledDur,jdbcType=INTEGER},
+      </if>
+      <if test="locCalledAmt != null">
+        LOC_CALLED_AMT = #{locCalledAmt,jdbcType=INTEGER},
+      </if>
+      <if test="locCalledBilledDur != null">
+        LOC_CALLED_BILLED_DUR = #{locCalledBilledDur,jdbcType=INTEGER},
+      </if>
+      <if test="innerMyCalledTimes != null">
+        INNER_MY_CALLED_TIMES = #{innerMyCalledTimes,jdbcType=INTEGER},
+      </if>
+      <if test="innerMyCalledDur != null">
+        INNER_MY_CALLED_DUR = #{innerMyCalledDur,jdbcType=INTEGER},
+      </if>
+      <if test="innerMyCalledAmt != null">
+        INNER_MY_CALLED_AMT = #{innerMyCalledAmt,jdbcType=INTEGER},
+      </if>
+      <if test="innerMyCalledBilledDur != null">
+        INNER_MY_CALLED_BILLED_DUR = #{innerMyCalledBilledDur,jdbcType=INTEGER},
+      </if>
+      <if test="interMyCalledTimes != null">
+        INTER_MY_CALLED_TIMES = #{interMyCalledTimes,jdbcType=INTEGER},
+      </if>
+      <if test="interMyCalledDur != null">
+        INTER_MY_CALLED_DUR = #{interMyCalledDur,jdbcType=INTEGER},
+      </if>
+      <if test="interMyCalledAmt != null">
+        INTER_MY_CALLED_AMT = #{interMyCalledAmt,jdbcType=INTEGER},
+      </if>
+      <if test="interMyCalledBilledDur != null">
+        INTER_MY_CALLED_BILLED_DUR = #{interMyCalledBilledDur,jdbcType=INTEGER},
+      </if>
+      <if test="gatMyCalledTimes != null">
+        GAT_MY_CALLED_TIMES = #{gatMyCalledTimes,jdbcType=INTEGER},
+      </if>
+      <if test="gatMyCalledDur != null">
+        GAT_MY_CALLED_DUR = #{gatMyCalledDur,jdbcType=INTEGER},
+      </if>
+      <if test="gatMyCalledAmt != null">
+        GAT_MY_CALLED_AMT = #{gatMyCalledAmt,jdbcType=INTEGER},
+      </if>
+      <if test="gatMyCalledBilledDur != null">
+        GAT_MY_CALLED_BILLED_DUR = #{gatMyCalledBilledDur,jdbcType=INTEGER},
+      </if>
+      <if test="prodInstCid != null">
+        PROD_INST_CID = #{prodInstCid,jdbcType=VARCHAR},
+      </if>
+      <if test="custCid != null">
+        CUST_CID = #{custCid,jdbcType=VARCHAR},
+      </if>
+      <if test="acntCid != null">
+        ACNT_CID = #{acntCid,jdbcType=VARCHAR},
+      </if>
+      <if test="totalAmt != null">
+        TOTAL_AMT = #{totalAmt,jdbcType=INTEGER},
+      </if>
+      <if test="totalRentalAmt != null">
+        TOTAL_RENTAL_AMT = #{totalRentalAmt,jdbcType=INTEGER},
+      </if>
+      <if test="totalUseAmt != null">
+        TOTAL_USE_AMT = #{totalUseAmt,jdbcType=INTEGER},
+      </if>
+      <if test="itemDeviceModel != null">
+        ITEM_DEVICE_MODEL = #{itemDeviceModel,jdbcType=VARCHAR},
+      </if>
+      <if test="deviceClass != null">
+        DEVICE_CLASS = #{deviceClass,jdbcType=VARCHAR},
+      </if>
+      <if test="gType != null">
+        G_TYPE = #{gType,jdbcType=VARCHAR},
+      </if>
+      <if test="unitPrice != null">
+        UNIT_PRICE = #{unitPrice,jdbcType=INTEGER},
+      </if>
+      <if test="ifWap != null">
+        IF_WAP = #{ifWap,jdbcType=INTEGER},
+      </if>
+      <if test="ifNet != null">
+        IF_NET = #{ifNet,jdbcType=INTEGER},
+      </if>
+      <if test="wapTimes != null">
+        WAP_TIMES = #{wapTimes,jdbcType=INTEGER},
+      </if>
+      <if test="netTimes != null">
+        NET_TIMES = #{netTimes,jdbcType=INTEGER},
+      </if>
+      <if test="wapGrossBytes != null">
+        WAP_GROSS_BYTES = #{wapGrossBytes,jdbcType=BIGINT},
+      </if>
+      <if test="netGrossBytes != null">
+        NET_GROSS_BYTES = #{netGrossBytes,jdbcType=BIGINT},
+      </if>
+      <if test="receive1x != null">
+        RECEIVE_1X = #{receive1x,jdbcType=INTEGER},
+      </if>
+      <if test="receive1xM != null">
+        RECEIVE_1X_M = #{receive1xM,jdbcType=INTEGER},
+      </if>
+      <if test="send1x != null">
+        SEND_1X = #{send1x,jdbcType=BIGINT},
+      </if>
+      <if test="send1xM != null">
+        SEND_1X_M = #{send1xM,jdbcType=INTEGER},
+      </if>
+      <if test="receiveEvdo != null">
+        RECEIVE_EVDO = #{receiveEvdo,jdbcType=BIGINT},
+      </if>
+      <if test="receiveEvdoM != null">
+        RECEIVE_EVDO_M = #{receiveEvdoM,jdbcType=BIGINT},
+      </if>
+      <if test="sendEvdo != null">
+        SEND_EVDO = #{sendEvdo,jdbcType=BIGINT},
+      </if>
+      <if test="sendEvdoM != null">
+        SEND_EVDO_M = #{sendEvdoM,jdbcType=BIGINT},
+      </if>
+      <if test="receiveWifi != null">
+        RECEIVE_WIFI = #{receiveWifi,jdbcType=INTEGER},
+      </if>
+      <if test="receiveWifiM != null">
+        RECEIVE_WIFI_M = #{receiveWifiM,jdbcType=INTEGER},
+      </if>
+      <if test="sendWifi != null">
+        SEND_WIFI = #{sendWifi,jdbcType=BIGINT},
+      </if>
+      <if test="sendWifiM != null">
+        SEND_WIFI_M = #{sendWifiM,jdbcType=BIGINT},
+      </if>
+      <if test="ifTysxBillFlag != null">
+        IF_TYSX_BILL_FLAG = #{ifTysxBillFlag,jdbcType=INTEGER},
+      </if>
+      <if test="ifLiveFlag != null">
+        IF_LIVE_FLAG = #{ifLiveFlag,jdbcType=INTEGER},
+      </if>
+      <if test="ifQq != null">
+        IF_QQ = #{ifQq,jdbcType=INTEGER},
+      </if>
+      <if test="qqDtimes != null">
+        QQ_DTIMES = #{qqDtimes,jdbcType=INTEGER},
+      </if>
+      <if test="mmsTimes != null">
+        MMS_TIMES = #{mmsTimes,jdbcType=INTEGER},
+      </if>
+      <if test="spmmsTimes != null">
+        SPMMS_TIMES = #{spmmsTimes,jdbcType=INTEGER},
+      </if>
+      <if test="ifSmsFlag != null">
+        IF_SMS_FLAG = #{ifSmsFlag,jdbcType=INTEGER},
+      </if>
+      <if test="timesSmsSend != null">
+        TIMES_SMS_SEND = #{timesSmsSend,jdbcType=INTEGER},
+      </if>
+      <if test="if189mailActiveFlag != null">
+        IF_189MAIL_ACTIVE_FLAG = #{if189mailActiveFlag,jdbcType=INTEGER},
+      </if>
+      <if test="i4gAmt != null">
+        I4G_AMT = #{i4gAmt,jdbcType=INTEGER},
+      </if>
+      <if test="i4gTotBytes != null">
+        I4G_TOT_BYTES = #{i4gTotBytes,jdbcType=BIGINT},
+      </if>
+      <if test="i4gDur != null">
+        I4G_DUR = #{i4gDur,jdbcType=INTEGER},
+      </if>
+      <if test="i4gOnlineTimes != null">
+        I4G_ONLINE_TIMES = #{i4gOnlineTimes,jdbcType=INTEGER},
+      </if>
+      <if test="i4gBilledDur != null">
+        I4G_BILLED_DUR = #{i4gBilledDur,jdbcType=INTEGER},
+      </if>
+      <if test="i4gLocAmt != null">
+        I4G_LOC_AMT = #{i4gLocAmt,jdbcType=INTEGER},
+      </if>
+      <if test="i4gLocTotBytes != null">
+        I4G_LOC_TOT_BYTES = #{i4gLocTotBytes,jdbcType=BIGINT},
+      </if>
+      <if test="i4gLocDur != null">
+        I4G_LOC_DUR = #{i4gLocDur,jdbcType=INTEGER},
+      </if>
+      <if test="i4gLocOnlineTimes != null">
+        I4G_LOC_ONLINE_TIMES = #{i4gLocOnlineTimes,jdbcType=INTEGER},
+      </if>
+      <if test="i4gLocBilledDur != null">
+        I4G_LOC_BILLED_DUR = #{i4gLocBilledDur,jdbcType=INTEGER},
+      </if>
+      <if test="i4gMyAmtIn != null">
+        I4G_MY_AMT_IN = #{i4gMyAmtIn,jdbcType=BIGINT},
+      </if>
+      <if test="i4gMyAmtOut != null">
+        I4G_MY_AMT_OUT = #{i4gMyAmtOut,jdbcType=INTEGER},
+      </if>
+      <if test="i4gMyTotBytesIn != null">
+        I4G_MY_TOT_BYTES_IN = #{i4gMyTotBytesIn,jdbcType=BIGINT},
+      </if>
+      <if test="i4gMyTotBytesOut != null">
+        I4G_MY_TOT_BYTES_OUT = #{i4gMyTotBytesOut,jdbcType=INTEGER},
+      </if>
+      <if test="i4gMyDurIn != null">
+        I4G_MY_DUR_IN = #{i4gMyDurIn,jdbcType=INTEGER},
+      </if>
+      <if test="i4gMyDurOut != null">
+        I4G_MY_DUR_OUT = #{i4gMyDurOut,jdbcType=INTEGER},
+      </if>
+      <if test="i4gMyOnlineTimesIn != null">
+        I4G_MY_ONLINE_TIMES_IN = #{i4gMyOnlineTimesIn,jdbcType=INTEGER},
+      </if>
+      <if test="i4gMyOnlineTimesOut != null">
+        I4G_MY_ONLINE_TIMES_OUT = #{i4gMyOnlineTimesOut,jdbcType=INTEGER},
+      </if>
+      <if test="i4gMyBilledDurIn != null">
+        I4G_MY_BILLED_DUR_IN = #{i4gMyBilledDurIn,jdbcType=INTEGER},
+      </if>
+      <if test="i4gMyBilledDurOut != null">
+        I4G_MY_BILLED_DUR_OUT = #{i4gMyBilledDurOut,jdbcType=INTEGER},
+      </if>
+      <if test="promNum != null">
+        PROM_NUM = #{promNum,jdbcType=VARCHAR},
+      </if>
+      <if test="promName != null">
+        PROM_NAME = #{promName,jdbcType=VARCHAR},
+      </if>
+      <if test="salePolicyName != null">
+        SALE_POLICY_NAME = #{salePolicyName,jdbcType=VARCHAR},
+      </if>
+      <if test="promStartDt != null">
+        PROM_START_DT = #{promStartDt,jdbcType=VARCHAR},
+      </if>
+      <if test="promEndDt != null">
+        PROM_END_DT = #{promEndDt,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where ID = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.aby.record.model.Record">
+    update cdma
+    set DTA_DATE = #{dtaDate,jdbcType=VARCHAR},
+      PROD_SPEC_ID = #{prodSpecId,jdbcType=INTEGER},
+      INTEGRATION_CD = #{integrationCd,jdbcType=VARCHAR},
+      USER_ID = #{userId,jdbcType=VARCHAR},
+      VALUE_ADDED_AMT = #{valueAddedAmt,jdbcType=INTEGER},
+      CAILING_AMT = #{cailingAmt,jdbcType=INTEGER},
+      CAILING_AMOUNT = #{cailingAmount,jdbcType=INTEGER},
+      SP_SMS_AMT = #{spSmsAmt,jdbcType=INTEGER},
+      SP_SMS_AMOUNT = #{spSmsAmount,jdbcType=INTEGER},
+      INTERNET_AMT = #{internetAmt,jdbcType=INTEGER},
+      INTERNET_TOT_BYTES = #{internetTotBytes,jdbcType=BIGINT},
+      INTERNET_DUR = #{internetDur,jdbcType=INTEGER},
+      INTERNET_ONLINE_TIMES = #{internetOnlineTimes,jdbcType=INTEGER},
+      INTERNET_BILLED_DUR = #{internetBilledDur,jdbcType=INTEGER},
+      I1X_AMT = #{i1xAmt,jdbcType=INTEGER},
+      I1X_TOT_BYTES = #{i1xTotBytes,jdbcType=BIGINT},
+      I1X_DUR = #{i1xDur,jdbcType=INTEGER},
+      I1X_ONLINE_TIMES = #{i1xOnlineTimes,jdbcType=INTEGER},
+      I1X_BILLED_DUR = #{i1xBilledDur,jdbcType=INTEGER},
+      I1X_LOC_AMT = #{i1xLocAmt,jdbcType=INTEGER},
+      I1X_LOC_TOT_BYTES = #{i1xLocTotBytes,jdbcType=BIGINT},
+      I1X_LOC_DUR = #{i1xLocDur,jdbcType=INTEGER},
+      I1X_LOC_ONLINE_TIMES = #{i1xLocOnlineTimes,jdbcType=INTEGER},
+      I1X_LOC_BILLED_DUR = #{i1xLocBilledDur,jdbcType=INTEGER},
+      I1X_MY_AMT = #{i1xMyAmt,jdbcType=INTEGER},
+      I1X_MY_TOT_BYTES = #{i1xMyTotBytes,jdbcType=BIGINT},
+      I1X_MY_DUR = #{i1xMyDur,jdbcType=INTEGER},
+      I1X_MY_ONLINE_TIMES = #{i1xMyOnlineTimes,jdbcType=INTEGER},
+      I1X_MY_BILLED_DUR = #{i1xMyBilledDur,jdbcType=INTEGER},
+      WLAN_AMT = #{wlanAmt,jdbcType=INTEGER},
+      WLAN_TOT_BYTES = #{wlanTotBytes,jdbcType=BIGINT},
+      WLAN_DUR = #{wlanDur,jdbcType=INTEGER},
+      WLAN_ONLINE_TIMES = #{wlanOnlineTimes,jdbcType=INTEGER},
+      WLAN_BILLED_DUR = #{wlanBilledDur,jdbcType=INTEGER},
+      WLAN_LOC_AMT = #{wlanLocAmt,jdbcType=INTEGER},
+      WLAN_LOC_TOT_BYTES = #{wlanLocTotBytes,jdbcType=BIGINT},
+      WLAN_LOC_DUR = #{wlanLocDur,jdbcType=INTEGER},
+      WLAN_LOC_ONLINE_TIMES = #{wlanLocOnlineTimes,jdbcType=INTEGER},
+      WLAN_LOC_BILLED_DUR = #{wlanLocBilledDur,jdbcType=INTEGER},
+      WLAN_MY_AMT = #{wlanMyAmt,jdbcType=INTEGER},
+      WLAN_MY_TOT_BYTES = #{wlanMyTotBytes,jdbcType=BIGINT},
+      WLAN_MY_DUR = #{wlanMyDur,jdbcType=INTEGER},
+      WLAN_MY_ONLINE_TIMES = #{wlanMyOnlineTimes,jdbcType=INTEGER},
+      WLAN_MY_BILLED_DUR = #{wlanMyBilledDur,jdbcType=INTEGER},
+      I3G_AMT = #{i3gAmt,jdbcType=INTEGER},
+      I3G_TOT_BYTES = #{i3gTotBytes,jdbcType=BIGINT},
+      I3G_DUR = #{i3gDur,jdbcType=INTEGER},
+      I3G_ONLINE_TIMES = #{i3gOnlineTimes,jdbcType=INTEGER},
+      I3G_BILLED_DUR = #{i3gBilledDur,jdbcType=INTEGER},
+      I3G_LOC_AMT = #{i3gLocAmt,jdbcType=INTEGER},
+      I3G_LOC_TOT_BYTES = #{i3gLocTotBytes,jdbcType=BIGINT},
+      I3G_LOC_DUR = #{i3gLocDur,jdbcType=INTEGER},
+      I3G_LOC_ONLINE_TIMES = #{i3gLocOnlineTimes,jdbcType=INTEGER},
+      I3G_LOC_BILLED_DUR = #{i3gLocBilledDur,jdbcType=INTEGER},
+      I3G_MY_AMT = #{i3gMyAmt,jdbcType=INTEGER},
+      I3G_MY_TOT_BYTES = #{i3gMyTotBytes,jdbcType=BIGINT},
+      I3G_MY_DUR = #{i3gMyDur,jdbcType=INTEGER},
+      I3G_MY_ONLINE_TIMES = #{i3gMyOnlineTimes,jdbcType=INTEGER},
+      I3G_MY_BILLED_DUR = #{i3gMyBilledDur,jdbcType=INTEGER},
+      INNER_SEND_SMS_AMT = #{innerSendSmsAmt,jdbcType=INTEGER},
+      INNER_SEND_SMS_TIMES = #{innerSendSmsTimes,jdbcType=INTEGER},
+      INTER_SEND_SMS_AMT = #{interSendSmsAmt,jdbcType=INTEGER},
+      INTER_SEND_SMS_TIMES = #{interSendSmsTimes,jdbcType=INTEGER},
+      VOICE_TIMES = #{voiceTimes,jdbcType=INTEGER},
+      VOICE_DUR = #{voiceDur,jdbcType=INTEGER},
+      VOICE_AMT = #{voiceAmt,jdbcType=INTEGER},
+      VOICE_BILLED_DUR = #{voiceBilledDur,jdbcType=INTEGER},
+      VOICE_CALLING_TIMES = #{voiceCallingTimes,jdbcType=INTEGER},
+      VOICE_CALLING_DUR = #{voiceCallingDur,jdbcType=INTEGER},
+      VOICE_CALLING_AMT = #{voiceCallingAmt,jdbcType=INTEGER},
+      VOICE_CALLING_BILLED_DUR = #{voiceCallingBilledDur,jdbcType=INTEGER},
+      VOICE_CALLED_TIMES = #{voiceCalledTimes,jdbcType=INTEGER},
+      VOICE_CALLED_DUR = #{voiceCalledDur,jdbcType=INTEGER},
+      VOICE_CALLED_AMT = #{voiceCalledAmt,jdbcType=INTEGER},
+      VOICE_CALLED_BILLED_DUR = #{voiceCalledBilledDur,jdbcType=INTEGER},
+      LOC_CALLING_TIMES = #{locCallingTimes,jdbcType=INTEGER},
+      LOC_CALLING_DUR = #{locCallingDur,jdbcType=INTEGER},
+      LOC_CALLING_AMT = #{locCallingAmt,jdbcType=INTEGER},
+      LOC_CALLING_BILLED_DUR = #{locCallingBilledDur,jdbcType=INTEGER},
+      DDD_CALLING_TIMES = #{dddCallingTimes,jdbcType=INTEGER},
+      DDD_CALLING_DUR = #{dddCallingDur,jdbcType=INTEGER},
+      DDD_CALLING_AMT = #{dddCallingAmt,jdbcType=INTEGER},
+      DDD_CALLING_BILLED_DUR = #{dddCallingBilledDur,jdbcType=INTEGER},
+      IDD_CALLING_TIMES = #{iddCallingTimes,jdbcType=INTEGER},
+      IDD_CALLING_DUR = #{iddCallingDur,jdbcType=INTEGER},
+      IDD_CALLING_AMT = #{iddCallingAmt,jdbcType=INTEGER},
+      IDD_CALLING_BILLED_DUR = #{iddCallingBilledDur,jdbcType=INTEGER},
+      GAT_CALLING_TIMES = #{gatCallingTimes,jdbcType=INTEGER},
+      GAT_CALLING_DUR = #{gatCallingDur,jdbcType=INTEGER},
+      GAT_CALLING_AMT = #{gatCallingAmt,jdbcType=INTEGER},
+      GAT_CALLING_BILLED_DUR = #{gatCallingBilledDur,jdbcType=INTEGER},
+      INNER_MY_CALLING_TIMES = #{innerMyCallingTimes,jdbcType=INTEGER},
+      INNER_MY_CALLING_DUR = #{innerMyCallingDur,jdbcType=INTEGER},
+      INNER_MY_CALLING_AMT = #{innerMyCallingAmt,jdbcType=INTEGER},
+      INNER_MY_CALLING_BILLED_DUR = #{innerMyCallingBilledDur,jdbcType=INTEGER},
+      INTER_MY_CALLING_TIMES = #{interMyCallingTimes,jdbcType=INTEGER},
+      INTER_MY_CALLING_DUR = #{interMyCallingDur,jdbcType=INTEGER},
+      INTER_MY_CALLING_AMT = #{interMyCallingAmt,jdbcType=INTEGER},
+      INTER_MY_CALLING_BILLED_DUR = #{interMyCallingBilledDur,jdbcType=INTEGER},
+      GAT_MY_CALLING_TIMES = #{gatMyCallingTimes,jdbcType=INTEGER},
+      GAT_MY_CALLING_DUR = #{gatMyCallingDur,jdbcType=INTEGER},
+      GAT_MY_CALLING_AMT = #{gatMyCallingAmt,jdbcType=INTEGER},
+      GAT_MY_CALLING_BILLED_DUR = #{gatMyCallingBilledDur,jdbcType=INTEGER},
+      LOC_CALLED_TIMES = #{locCalledTimes,jdbcType=INTEGER},
+      LOC_CALLED_DUR = #{locCalledDur,jdbcType=INTEGER},
+      LOC_CALLED_AMT = #{locCalledAmt,jdbcType=INTEGER},
+      LOC_CALLED_BILLED_DUR = #{locCalledBilledDur,jdbcType=INTEGER},
+      INNER_MY_CALLED_TIMES = #{innerMyCalledTimes,jdbcType=INTEGER},
+      INNER_MY_CALLED_DUR = #{innerMyCalledDur,jdbcType=INTEGER},
+      INNER_MY_CALLED_AMT = #{innerMyCalledAmt,jdbcType=INTEGER},
+      INNER_MY_CALLED_BILLED_DUR = #{innerMyCalledBilledDur,jdbcType=INTEGER},
+      INTER_MY_CALLED_TIMES = #{interMyCalledTimes,jdbcType=INTEGER},
+      INTER_MY_CALLED_DUR = #{interMyCalledDur,jdbcType=INTEGER},
+      INTER_MY_CALLED_AMT = #{interMyCalledAmt,jdbcType=INTEGER},
+      INTER_MY_CALLED_BILLED_DUR = #{interMyCalledBilledDur,jdbcType=INTEGER},
+      GAT_MY_CALLED_TIMES = #{gatMyCalledTimes,jdbcType=INTEGER},
+      GAT_MY_CALLED_DUR = #{gatMyCalledDur,jdbcType=INTEGER},
+      GAT_MY_CALLED_AMT = #{gatMyCalledAmt,jdbcType=INTEGER},
+      GAT_MY_CALLED_BILLED_DUR = #{gatMyCalledBilledDur,jdbcType=INTEGER},
+      PROD_INST_CID = #{prodInstCid,jdbcType=VARCHAR},
+      CUST_CID = #{custCid,jdbcType=VARCHAR},
+      ACNT_CID = #{acntCid,jdbcType=VARCHAR},
+      TOTAL_AMT = #{totalAmt,jdbcType=INTEGER},
+      TOTAL_RENTAL_AMT = #{totalRentalAmt,jdbcType=INTEGER},
+      TOTAL_USE_AMT = #{totalUseAmt,jdbcType=INTEGER},
+      ITEM_DEVICE_MODEL = #{itemDeviceModel,jdbcType=VARCHAR},
+      DEVICE_CLASS = #{deviceClass,jdbcType=VARCHAR},
+      G_TYPE = #{gType,jdbcType=VARCHAR},
+      UNIT_PRICE = #{unitPrice,jdbcType=INTEGER},
+      IF_WAP = #{ifWap,jdbcType=INTEGER},
+      IF_NET = #{ifNet,jdbcType=INTEGER},
+      WAP_TIMES = #{wapTimes,jdbcType=INTEGER},
+      NET_TIMES = #{netTimes,jdbcType=INTEGER},
+      WAP_GROSS_BYTES = #{wapGrossBytes,jdbcType=BIGINT},
+      NET_GROSS_BYTES = #{netGrossBytes,jdbcType=BIGINT},
+      RECEIVE_1X = #{receive1x,jdbcType=INTEGER},
+      RECEIVE_1X_M = #{receive1xM,jdbcType=INTEGER},
+      SEND_1X = #{send1x,jdbcType=BIGINT},
+      SEND_1X_M = #{send1xM,jdbcType=INTEGER},
+      RECEIVE_EVDO = #{receiveEvdo,jdbcType=BIGINT},
+      RECEIVE_EVDO_M = #{receiveEvdoM,jdbcType=BIGINT},
+      SEND_EVDO = #{sendEvdo,jdbcType=BIGINT},
+      SEND_EVDO_M = #{sendEvdoM,jdbcType=BIGINT},
+      RECEIVE_WIFI = #{receiveWifi,jdbcType=INTEGER},
+      RECEIVE_WIFI_M = #{receiveWifiM,jdbcType=INTEGER},
+      SEND_WIFI = #{sendWifi,jdbcType=BIGINT},
+      SEND_WIFI_M = #{sendWifiM,jdbcType=BIGINT},
+      IF_TYSX_BILL_FLAG = #{ifTysxBillFlag,jdbcType=INTEGER},
+      IF_LIVE_FLAG = #{ifLiveFlag,jdbcType=INTEGER},
+      IF_QQ = #{ifQq,jdbcType=INTEGER},
+      QQ_DTIMES = #{qqDtimes,jdbcType=INTEGER},
+      MMS_TIMES = #{mmsTimes,jdbcType=INTEGER},
+      SPMMS_TIMES = #{spmmsTimes,jdbcType=INTEGER},
+      IF_SMS_FLAG = #{ifSmsFlag,jdbcType=INTEGER},
+      TIMES_SMS_SEND = #{timesSmsSend,jdbcType=INTEGER},
+      IF_189MAIL_ACTIVE_FLAG = #{if189mailActiveFlag,jdbcType=INTEGER},
+      I4G_AMT = #{i4gAmt,jdbcType=INTEGER},
+      I4G_TOT_BYTES = #{i4gTotBytes,jdbcType=BIGINT},
+      I4G_DUR = #{i4gDur,jdbcType=INTEGER},
+      I4G_ONLINE_TIMES = #{i4gOnlineTimes,jdbcType=INTEGER},
+      I4G_BILLED_DUR = #{i4gBilledDur,jdbcType=INTEGER},
+      I4G_LOC_AMT = #{i4gLocAmt,jdbcType=INTEGER},
+      I4G_LOC_TOT_BYTES = #{i4gLocTotBytes,jdbcType=BIGINT},
+      I4G_LOC_DUR = #{i4gLocDur,jdbcType=INTEGER},
+      I4G_LOC_ONLINE_TIMES = #{i4gLocOnlineTimes,jdbcType=INTEGER},
+      I4G_LOC_BILLED_DUR = #{i4gLocBilledDur,jdbcType=INTEGER},
+      I4G_MY_AMT_IN = #{i4gMyAmtIn,jdbcType=BIGINT},
+      I4G_MY_AMT_OUT = #{i4gMyAmtOut,jdbcType=INTEGER},
+      I4G_MY_TOT_BYTES_IN = #{i4gMyTotBytesIn,jdbcType=BIGINT},
+      I4G_MY_TOT_BYTES_OUT = #{i4gMyTotBytesOut,jdbcType=INTEGER},
+      I4G_MY_DUR_IN = #{i4gMyDurIn,jdbcType=INTEGER},
+      I4G_MY_DUR_OUT = #{i4gMyDurOut,jdbcType=INTEGER},
+      I4G_MY_ONLINE_TIMES_IN = #{i4gMyOnlineTimesIn,jdbcType=INTEGER},
+      I4G_MY_ONLINE_TIMES_OUT = #{i4gMyOnlineTimesOut,jdbcType=INTEGER},
+      I4G_MY_BILLED_DUR_IN = #{i4gMyBilledDurIn,jdbcType=INTEGER},
+      I4G_MY_BILLED_DUR_OUT = #{i4gMyBilledDurOut,jdbcType=INTEGER},
+      PROM_NUM = #{promNum,jdbcType=VARCHAR},
+      PROM_NAME = #{promName,jdbcType=VARCHAR},
+      SALE_POLICY_NAME = #{salePolicyName,jdbcType=VARCHAR},
+      PROM_START_DT = #{promStartDt,jdbcType=VARCHAR},
+      PROM_END_DT = #{promEndDt,jdbcType=VARCHAR}
+    where ID = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>
