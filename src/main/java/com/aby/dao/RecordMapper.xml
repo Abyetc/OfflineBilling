@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-<mapper namespace="com.aby.record.dao.RecordMapper">
-  <resultMap id="BaseResultMap" type="com.aby.record.model.Record">
+<mapper namespace="com.aby.mapping.RecordMapper">
+  <resultMap id="BaseResultMap" type="com.aby.model.Record">
     <id column="ID" jdbcType="INTEGER" property="id" />
     <result column="DTA_DATE" jdbcType="VARCHAR" property="dtaDate" />
     <result column="PROD_SPEC_ID" jdbcType="INTEGER" property="prodSpecId" />
@@ -228,11 +228,24 @@
     from cdma
     where ID = #{id,jdbcType=INTEGER}
   </select>
+  
+  <select id="selectIDs" parameterType="java.lang.String" resultType="int">
+  	select ID  from cdma 
+  	where PROM_NUM = #{PROM_NUM,jdbcType=VARCHAR}
+  </select>
+  
+  <select id="selectByPackageNum" parameterType="java.lang.String" resultMap="BaseResultMap">
+  	select 
+  	<include refid="Base_Column_List" />
+  	from cdma 
+  	where PROM_NUM = #{PROM_NUM,jdbcType=VARCHAR}
+  </select>
+  
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
     delete from cdma
     where ID = #{id,jdbcType=INTEGER}
   </delete>
-  <insert id="insert" parameterType="com.aby.record.model.Record">
+  <insert id="insert" parameterType="com.aby.model.Record">
     insert into cdma (ID, DTA_DATE, PROD_SPEC_ID, 
       INTEGRATION_CD, USER_ID, VALUE_ADDED_AMT, 
       CAILING_AMT, CAILING_AMOUNT, SP_SMS_AMT, 
@@ -362,7 +375,7 @@
       #{promName,jdbcType=VARCHAR}, #{salePolicyName,jdbcType=VARCHAR}, #{promStartDt,jdbcType=VARCHAR}, 
       #{promEndDt,jdbcType=VARCHAR})
   </insert>
-  <insert id="insertSelective" parameterType="com.aby.record.model.Record">
+  <insert id="insertSelective" parameterType="com.aby.model.Record">
     insert into cdma
     <trim prefix="(" suffix=")" suffixOverrides=",">
       <if test="id != null">
@@ -1461,7 +1474,7 @@
       </if>
     </trim>
   </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="com.aby.record.model.Record">
+  <update id="updateByPrimaryKeySelective" parameterType="com.aby.model.Record">
     update cdma
     <set>
       <if test="dtaDate != null">
@@ -2010,7 +2023,7 @@
     </set>
     where ID = #{id,jdbcType=INTEGER}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.aby.record.model.Record">
+  <update id="updateByPrimaryKey" parameterType="com.aby.model.Record">
     update cdma
     set DTA_DATE = #{dtaDate,jdbcType=VARCHAR},
       PROD_SPEC_ID = #{prodSpecId,jdbcType=INTEGER},

@@ -3,6 +3,9 @@
   PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-config.dtd">
 <configuration>
+
+	<!-- <settings> <setting name="logImpl" value="LOG4J" /> </settings> -->
+	
 	<environments default="development">
 		<environment id="development">
 			<!-- 事务管理类型，JDBC表示直接使用JDBC的提交和回滚设置，依赖于数据源得到的连接来管理事务 -->
@@ -16,9 +19,12 @@
 			</dataSource>
 		</environment>
 	</environments>
-	
+
 	<mappers>
 		<!-- SQL代码和映射信息配置文件 -->
-		<mapper resource="com/aby/record/dao/RecordMapper.xml" />
+		<mapper resource="com/aby/dao/BillMapper.xml" />
+		<mapper resource="com/aby/dao/RecordMapper.xml" />
 	</mappers>
+
+
 </configuration>

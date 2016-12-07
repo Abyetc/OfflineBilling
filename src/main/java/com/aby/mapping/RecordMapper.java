@@ -1,6 +1,8 @@
-package com.aby.record.dao;
+package com.aby.mapping;
 
-import com.aby.record.model.Record;
+import java.util.List;
+
+import com.aby.model.Record;
 
 public interface RecordMapper {
     int deleteByPrimaryKey(Integer id);
@@ -10,7 +12,11 @@ public interface RecordMapper {
     int insertSelective(Record record);
 
     Record selectByPrimaryKey(Integer id);
-
+    
+    List<Integer> selectIDs(String packageNum);
+    
+    List<Record> selectByPackageNum(String packageNum);
+    
     int updateByPrimaryKeySelective(Record record);
 
     int updateByPrimaryKey(Record record);

@@ -1,0 +1,80 @@
+package com.process
+
+import com.aby.model.*;
+
+// 计算超出部分资源应该收费金额
+// freeAmount 免费量
+// unitPrice 超过部分单价
+// amount总量
+function int exceedAmount(long freeAmount, int unitPrice, long amount){
+	if(amount <= freeAmount){
+		return 0;
+	}else{
+		return (int)(amount - freeAmount) * unitPrice;
+	}
+}
+
+	function long countKB(long bytes){
+		return (long) Math.ceil(bytes / 1024.0);
+	}
+	
+	function long countMB(long bytes){
+		long kb = countKB(bytes);
+		return (long) Math.ceil(kb / 1024.0);
+	}
+	
+	function long countGB(long bytes){
+		long mb = countMB(bytes);
+		return (long) Math.ceil(mb / 1024.0);
+	}
+
+// 分阶段收费
+function int stageCharge(int total, int free, int unit, int freeBegin, int freeEnd){
+		if(total <= free){
+			return 0;
+		}
+		
+		int exceed = total - free;
+		int count = exceed / freeEnd;
+		int result = count * (unit * freeBegin);
+		result += (count % freeEnd) * unit;
+		return result;
+	}
+
+// 设置月租
+rule "TOTAL_RENTAL_AMT"
+	when 
+		record : Record(promNum == "2-U33YJHZ");	// 乐享4G 59元
+	then 
+		// 设置月租
+		record.setTotalRentalAmt(5900);
+		
+		// 设置国内短信发送金额
+		int sms = record.getInnerSendSmsTimes();
+		int amount = exceedAmount(0, 10, sms);		// 10分钱一条短信
+		record.setInnerSendSmsAmt(amount);
+		
+		// 设置wlan金额
+		int wlanAmt = record.getWlanBilledDur() * 3;	// 0.03元一分钟
+		record.setWlanAmt(wlanAmt);				
+		
+		// 上网总金额
+		long internetTotByte = record.getInternetTotBytes() - record.getWlanTotBytes(); 
+		long mb = countMB(internetTotByte);
+		int internetAmt = stageCharge((int)mb, 500, 30, 100, 500) + wlanAmt;
+		record.setInternetAmt(internetAmt);
+		
+		// 通话金额，乐享4G不分本地和国内通话，所以，全部算进国内通话里面
+		int callingDur = record.getLocCallingBilledDur() + record.getDddCallingBilledDur() + record.getInnerMyCallingBilledDur();
+		int callingAMT = exceedAmount(100, 15, callingDur);
+		record.setDddCallingAmt(callingAMT);
+		record.setLocCallingAmt(0);
+		record.setInnerMyCallingAmt(0);		
+		record.setLocCalledAmt(0);
+		record.setInnerMyCalledAmt(0);
+		
+		// 这里比较特备，设置彩信的数量为彩信的金额就可以了，程序会自动转换到金额中去
+		record.setMmsTimes(10 * record.getMmsTimes());	
+end
+
+	

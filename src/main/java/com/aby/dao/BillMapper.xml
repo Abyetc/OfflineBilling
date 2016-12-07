@@ -1,0 +1,412 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.aby.mapping.BillMapper">
+	<resultMap id="BaseResultMap" type="com.aby.model.Bill">
+		<id column="RECORD_ID" jdbcType="INTEGER" property="recordId" />
+		<id column="PACKAGE_ID" jdbcType="VARCHAR" property="packageId" />
+		<result column="TOTAL_RENTAL_AMT" jdbcType="INTEGER" property="totalRentalAmt" />
+		<result column="TOTAL_USE_AMT" jdbcType="INTEGER" property="totalUseAmt" />
+		<result column="TOTAL_AMT" jdbcType="INTEGER" property="totalAmt" />
+		<result column="VALUE_ADDED_AMT" jdbcType="INTEGER" property="valueAddedAmt" />
+		<result column="CAILING_AMT" jdbcType="INTEGER" property="cailingAmt" />
+		<result column="SP_SMS_AMT" jdbcType="INTEGER" property="spSmsAmt" />
+		<result column="INTERNET_AMT" jdbcType="INTEGER" property="internetAmt" />
+		<result column="WLAN_AMT" jdbcType="INTEGER" property="wlanAmt" />
+		<result column="INNER_SEND_SMS_AMT" jdbcType="INTEGER"
+			property="innerSendSmsAmt" />
+		<result column="INTER_SEND_SMS_AMT" jdbcType="INTEGER"
+			property="interSendSmsAmt" />
+		<result column="VOICE_AMT" jdbcType="INTEGER" property="voiceAmt" />
+		<result column="VOICE_CALLING_AMT" jdbcType="INTEGER" property="voiceCallingAmt" />
+		<result column="VOICE_CALLED_AMT" jdbcType="INTEGER" property="voiceCalledAmt" />
+		<result column="LOC_CALLING_AMT" jdbcType="INTEGER" property="locCallingAmt" />
+		<result column="DDD_CALLING_AMT" jdbcType="INTEGER" property="dddCallingAmt" />
+		<result column="IDD_CALLING_AMT" jdbcType="INTEGER" property="iddCallingAmt" />
+		<result column="GAT_CALLING_AMT" jdbcType="INTEGER" property="gatCallingAmt" />
+		<result column="INNER_MY_CALLING_AMT" jdbcType="INTEGER"
+			property="innerMyCallingAmt" />
+		<result column="INTER_MY_CALLING_AMT" jdbcType="INTEGER"
+			property="interMyCallingAmt" />
+		<result column="GAT_MY_CALLING_AMT" jdbcType="INTEGER"
+			property="gatMyCallingAmt" />
+		<result column="LOC_CALLED_AMT" jdbcType="INTEGER" property="locCalledAmt" />
+		<result column="INNER_MY_CALLED_AMT" jdbcType="INTEGER"
+			property="innerMyCalledAmt" />
+		<result column="INTER_MY_CALLED_AMT" jdbcType="INTEGER"
+			property="interMyCalledAmt" />
+		<result column="GAT_MY_CALLED_AMT" jdbcType="INTEGER" property="gatMyCalledAmt" />
+		<result column="MMS_AMT" jdbcType="INTEGER" property="mmsAmt" />
+	</resultMap>
+	<sql id="Base_Column_List">
+		RECORD_ID, PACKAGE_ID, TOTAL_RENTAL_AMT, TOTAL_USE_AMT, TOTAL_AMT,
+		VALUE_ADDED_AMT,
+		CAILING_AMT, SP_SMS_AMT, INTERNET_AMT, WLAN_AMT, INNER_SEND_SMS_AMT,
+		INTER_SEND_SMS_AMT,
+		VOICE_AMT, VOICE_CALLING_AMT, VOICE_CALLED_AMT, LOC_CALLING_AMT,
+		DDD_CALLING_AMT,
+		IDD_CALLING_AMT, GAT_CALLING_AMT, INNER_MY_CALLING_AMT, INTER_MY_CALLING_AMT,
+		GAT_MY_CALLING_AMT,
+		LOC_CALLED_AMT, INNER_MY_CALLED_AMT, INTER_MY_CALLED_AMT, GAT_MY_CALLED_AMT, MMS_AMT
+	</sql>
+	<select id="selectByPrimaryKey" parameterType="com.aby.model.BillKey"
+		resultMap="BaseResultMap">
+		select
+		<include refid="Base_Column_List" />
+		from reBilling
+		where RECORD_ID = #{recordId,jdbcType=INTEGER}
+		and PACKAGE_ID = #{packageId,jdbcType=VARCHAR}
+	</select>
+	<delete id="deleteByPrimaryKey" parameterType="com.aby.model.BillKey">
+		delete from reBilling
+		where RECORD_ID = #{recordId,jdbcType=INTEGER}
+		and PACKAGE_ID = #{packageId,jdbcType=VARCHAR}
+	</delete>
+	<insert id="insert" parameterType="com.aby.model.Bill">
+		insert ignore into reBilling (RECORD_ID, PACKAGE_ID, TOTAL_RENTAL_AMT,
+		TOTAL_USE_AMT, TOTAL_AMT, VALUE_ADDED_AMT,
+		CAILING_AMT, SP_SMS_AMT, INTERNET_AMT,
+		WLAN_AMT, INNER_SEND_SMS_AMT, INTER_SEND_SMS_AMT,
+		VOICE_AMT, VOICE_CALLING_AMT, VOICE_CALLED_AMT,
+		LOC_CALLING_AMT, DDD_CALLING_AMT, IDD_CALLING_AMT,
+		GAT_CALLING_AMT, INNER_MY_CALLING_AMT, INTER_MY_CALLING_AMT,
+		GAT_MY_CALLING_AMT, LOC_CALLED_AMT, INNER_MY_CALLED_AMT,
+		INTER_MY_CALLED_AMT, GAT_MY_CALLED_AMT, MMS_AMT
+		)
+		values (#{recordId,jdbcType=INTEGER}, #{packageId,jdbcType=VARCHAR},
+		#{totalRentalAmt,jdbcType=INTEGER},
+		#{totalUseAmt,jdbcType=INTEGER}, #{totalAmt,jdbcType=INTEGER}, #{valueAddedAmt,jdbcType=INTEGER},
+		#{cailingAmt,jdbcType=INTEGER}, #{spSmsAmt,jdbcType=INTEGER},
+		#{internetAmt,jdbcType=INTEGER},
+		#{wlanAmt,jdbcType=INTEGER}, #{innerSendSmsAmt,jdbcType=INTEGER},
+		#{interSendSmsAmt,jdbcType=INTEGER},
+		#{voiceAmt,jdbcType=INTEGER}, #{voiceCallingAmt,jdbcType=INTEGER},
+		#{voiceCalledAmt,jdbcType=INTEGER},
+		#{locCallingAmt,jdbcType=INTEGER}, #{dddCallingAmt,jdbcType=INTEGER}, #{iddCallingAmt,jdbcType=INTEGER},
+		#{gatCallingAmt,jdbcType=INTEGER},
+		#{innerMyCallingAmt,jdbcType=INTEGER},
+		#{interMyCallingAmt,jdbcType=INTEGER},
+		#{gatMyCallingAmt,jdbcType=INTEGER}, #{locCalledAmt,jdbcType=INTEGER},
+		#{innerMyCalledAmt,jdbcType=INTEGER},
+		#{interMyCalledAmt,jdbcType=INTEGER},
+		#{gatMyCalledAmt,jdbcType=INTEGER}, #{mmsAmt,jdbcType=INTEGER}
+		)
+	</insert>
+
+	  <!-- 批量插入在新套餐下的计费数据 -->
+	<insert id="insertBatch" parameterType="java.util.List">
+		insert ignore into reBilling (RECORD_ID, PACKAGE_ID, TOTAL_RENTAL_AMT,
+		TOTAL_USE_AMT, TOTAL_AMT, VALUE_ADDED_AMT,
+		CAILING_AMT, SP_SMS_AMT, INTERNET_AMT,
+		WLAN_AMT, INNER_SEND_SMS_AMT, INTER_SEND_SMS_AMT,
+		VOICE_AMT, VOICE_CALLING_AMT, VOICE_CALLED_AMT,
+		LOC_CALLING_AMT, DDD_CALLING_AMT, IDD_CALLING_AMT,
+		GAT_CALLING_AMT, INNER_MY_CALLING_AMT, INTER_MY_CALLING_AMT,
+		GAT_MY_CALLING_AMT, LOC_CALLED_AMT, INNER_MY_CALLED_AMT,
+		INTER_MY_CALLED_AMT, GAT_MY_CALLED_AMT, MMS_AMT
+		)
+		values
+		<foreach collection="list" item="bill" separator=",">
+			(#{bill.recordId,jdbcType=INTEGER}, #{bill.packageId,jdbcType=VARCHAR},
+			#{bill.totalRentalAmt,jdbcType=INTEGER},
+			#{bill.totalUseAmt,jdbcType=INTEGER}, #{bill.totalAmt,jdbcType=INTEGER}, #{bill.valueAddedAmt,jdbcType=INTEGER},
+			#{bill.cailingAmt,jdbcType=INTEGER}, #{bill.spSmsAmt,jdbcType=INTEGER},
+			#{bill.internetAmt,jdbcType=INTEGER},
+			#{bill.wlanAmt,jdbcType=INTEGER}, #{bill.innerSendSmsAmt,jdbcType=INTEGER},
+			#{bill.interSendSmsAmt,jdbcType=INTEGER},
+			#{bill.voiceAmt,jdbcType=INTEGER}, #{bill.voiceCallingAmt,jdbcType=INTEGER},
+			#{bill.voiceCalledAmt,jdbcType=INTEGER},
+			#{bill.locCallingAmt,jdbcType=INTEGER}, #{bill.dddCallingAmt,jdbcType=INTEGER},
+			#{bill.iddCallingAmt,jdbcType=INTEGER},
+			#{bill.gatCallingAmt,jdbcType=INTEGER}, #{bill.innerMyCallingAmt,jdbcType=INTEGER},
+			#{bill.interMyCallingAmt,jdbcType=INTEGER},
+			#{bill.gatMyCallingAmt,jdbcType=INTEGER},
+			#{bill.locCalledAmt,jdbcType=INTEGER},
+			#{bill.innerMyCalledAmt,jdbcType=INTEGER},
+			#{bill.interMyCalledAmt,jdbcType=INTEGER},
+			#{bill.gatMyCalledAmt,jdbcType=INTEGER}, #{bill.mmsAmt,jdbcType=INTEGER}
+			)
+		</foreach>
+	</insert>
+
+	<insert id="insertSelective" parameterType="com.aby.model.Bill">
+		insert into reBilling
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="recordId != null">
+				RECORD_ID,
+			</if>
+			<if test="packageId != null">
+				PACKAGE_ID,
+			</if>
+			<if test="totalRentalAmt != null">
+				TOTAL_RENTAL_AMT,
+			</if>
+			<if test="totalUseAmt != null">
+				TOTAL_USE_AMT,
+			</if>
+			<if test="totalAmt != null">
+				TOTAL_AMT,
+			</if>
+			<if test="valueAddedAmt != null">
+				VALUE_ADDED_AMT,
+			</if>
+			<if test="cailingAmt != null">
+				CAILING_AMT,
+			</if>
+			<if test="spSmsAmt != null">
+				SP_SMS_AMT,
+			</if>
+			<if test="internetAmt != null">
+				INTERNET_AMT,
+			</if>
+			<if test="wlanAmt != null">
+				WLAN_AMT,
+			</if>
+			<if test="innerSendSmsAmt != null">
+				INNER_SEND_SMS_AMT,
+			</if>
+			<if test="interSendSmsAmt != null">
+				INTER_SEND_SMS_AMT,
+			</if>
+			<if test="voiceAmt != null">
+				VOICE_AMT,
+			</if>
+			<if test="voiceCallingAmt != null">
+				VOICE_CALLING_AMT,
+			</if>
+			<if test="voiceCalledAmt != null">
+				VOICE_CALLED_AMT,
+			</if>
+			<if test="locCallingAmt != null">
+				LOC_CALLING_AMT,
+			</if>
+			<if test="dddCallingAmt != null">
+				DDD_CALLING_AMT,
+			</if>
+			<if test="iddCallingAmt != null">
+				IDD_CALLING_AMT,
+			</if>
+			<if test="gatCallingAmt != null">
+				GAT_CALLING_AMT,
+			</if>
+			<if test="innerMyCallingAmt != null">
+				INNER_MY_CALLING_AMT,
+			</if>
+			<if test="interMyCallingAmt != null">
+				INTER_MY_CALLING_AMT,
+			</if>
+			<if test="gatMyCallingAmt != null">
+				GAT_MY_CALLING_AMT,
+			</if>
+			<if test="locCalledAmt != null">
+				LOC_CALLED_AMT,
+			</if>
+			<if test="innerMyCalledAmt != null">
+				INNER_MY_CALLED_AMT,
+			</if>
+			<if test="interMyCalledAmt != null">
+				INTER_MY_CALLED_AMT,
+			</if>
+			<if test="gatMyCalledAmt != null">
+				GAT_MY_CALLED_AMT,
+			</if>
+			<if test="mmsAmt != null">
+				MMS_AMT,
+			</if>
+		</trim>
+		<trim prefix="values (" suffix=")" suffixOverrides=",">
+			<if test="recordId != null">
+				#{recordId,jdbcType=INTEGER},
+			</if>
+			<if test="packageId != null">
+				#{packageId,jdbcType=VARCHAR},
+			</if>
+			<if test="totalRentalAmt != null">
+				#{totalRentalAmt,jdbcType=INTEGER},
+			</if>
+			<if test="totalUseAmt != null">
+				#{totalUseAmt,jdbcType=INTEGER},
+			</if>
+			<if test="totalAmt != null">
+				#{totalAmt,jdbcType=INTEGER},
+			</if>
+			<if test="valueAddedAmt != null">
+				#{valueAddedAmt,jdbcType=INTEGER},
+			</if>
+			<if test="cailingAmt != null">
+				#{cailingAmt,jdbcType=INTEGER},
+			</if>
+			<if test="spSmsAmt != null">
+				#{spSmsAmt,jdbcType=INTEGER},
+			</if>
+			<if test="internetAmt != null">
+				#{internetAmt,jdbcType=INTEGER},
+			</if>
+			<if test="wlanAmt != null">
+				#{wlanAmt,jdbcType=INTEGER},
+			</if>
+			<if test="innerSendSmsAmt != null">
+				#{innerSendSmsAmt,jdbcType=INTEGER},
+			</if>
+			<if test="interSendSmsAmt != null">
+				#{interSendSmsAmt,jdbcType=INTEGER},
+			</if>
+			<if test="voiceAmt != null">
+				#{voiceAmt,jdbcType=INTEGER},
+			</if>
+			<if test="voiceCallingAmt != null">
+				#{voiceCallingAmt,jdbcType=INTEGER},
+			</if>
+			<if test="voiceCalledAmt != null">
+				#{voiceCalledAmt,jdbcType=INTEGER},
+			</if>
+			<if test="locCallingAmt != null">
+				#{locCallingAmt,jdbcType=INTEGER},
+			</if>
+			<if test="dddCallingAmt != null">
+				#{dddCallingAmt,jdbcType=INTEGER},
+			</if>
+			<if test="iddCallingAmt != null">
+				#{iddCallingAmt,jdbcType=INTEGER},
+			</if>
+			<if test="gatCallingAmt != null">
+				#{gatCallingAmt,jdbcType=INTEGER},
+			</if>
+			<if test="innerMyCallingAmt != null">
+				#{innerMyCallingAmt,jdbcType=INTEGER},
+			</if>
+			<if test="interMyCallingAmt != null">
+				#{interMyCallingAmt,jdbcType=INTEGER},
+			</if>
+			<if test="gatMyCallingAmt != null">
+				#{gatMyCallingAmt,jdbcType=INTEGER},
+			</if>
+			<if test="locCalledAmt != null">
+				#{locCalledAmt,jdbcType=INTEGER},
+			</if>
+			<if test="innerMyCalledAmt != null">
+				#{innerMyCalledAmt,jdbcType=INTEGER},
+			</if>
+			<if test="interMyCalledAmt != null">
+				#{interMyCalledAmt,jdbcType=INTEGER},
+			</if>
+			<if test="gatMyCalledAmt != null">
+				#{gatMyCalledAmt,jdbcType=INTEGER},
+			</if>
+			<if test="mmsAmt != null">
+				#{mmsAmt,jdbcType=INTEGER},
+			</if>
+		</trim>
+	</insert>
+	<update id="updateByPrimaryKeySelective" parameterType="com.aby.model.Bill">
+		update reBilling
+		<set>
+			<if test="totalRentalAmt != null">
+				TOTAL_RENTAL_AMT = #{totalRentalAmt,jdbcType=INTEGER},
+			</if>
+			<if test="totalUseAmt != null">
+				TOTAL_USE_AMT = #{totalUseAmt,jdbcType=INTEGER},
+			</if>
+			<if test="totalAmt != null">
+				TOTAL_AMT = #{totalAmt,jdbcType=INTEGER},
+			</if>
+			<if test="valueAddedAmt != null">
+				VALUE_ADDED_AMT = #{valueAddedAmt,jdbcType=INTEGER},
+			</if>
+			<if test="cailingAmt != null">
+				CAILING_AMT = #{cailingAmt,jdbcType=INTEGER},
+			</if>
+			<if test="spSmsAmt != null">
+				SP_SMS_AMT = #{spSmsAmt,jdbcType=INTEGER},
+			</if>
+			<if test="internetAmt != null">
+				INTERNET_AMT = #{internetAmt,jdbcType=INTEGER},
+			</if>
+			<if test="wlanAmt != null">
+				WLAN_AMT = #{wlanAmt,jdbcType=INTEGER},
+			</if>
+			<if test="innerSendSmsAmt != null">
+				INNER_SEND_SMS_AMT = #{innerSendSmsAmt,jdbcType=INTEGER},
+			</if>
+			<if test="interSendSmsAmt != null">
+				INTER_SEND_SMS_AMT = #{interSendSmsAmt,jdbcType=INTEGER},
+			</if>
+			<if test="voiceAmt != null">
+				VOICE_AMT = #{voiceAmt,jdbcType=INTEGER},
+			</if>
+			<if test="voiceCallingAmt != null">
+				VOICE_CALLING_AMT = #{voiceCallingAmt,jdbcType=INTEGER},
+			</if>
+			<if test="voiceCalledAmt != null">
+				VOICE_CALLED_AMT = #{voiceCalledAmt,jdbcType=INTEGER},
+			</if>
+			<if test="locCallingAmt != null">
+				LOC_CALLING_AMT = #{locCallingAmt,jdbcType=INTEGER},
+			</if>
+			<if test="dddCallingAmt != null">
+				DDD_CALLING_AMT = #{dddCallingAmt,jdbcType=INTEGER},
+			</if>
+			<if test="iddCallingAmt != null">
+				IDD_CALLING_AMT = #{iddCallingAmt,jdbcType=INTEGER},
+			</if>
+			<if test="gatCallingAmt != null">
+				GAT_CALLING_AMT = #{gatCallingAmt,jdbcType=INTEGER},
+			</if>
+			<if test="innerMyCallingAmt != null">
+				INNER_MY_CALLING_AMT = #{innerMyCallingAmt,jdbcType=INTEGER},
+			</if>
+			<if test="interMyCallingAmt != null">
+				INTER_MY_CALLING_AMT = #{interMyCallingAmt,jdbcType=INTEGER},
+			</if>
+			<if test="gatMyCallingAmt != null">
+				GAT_MY_CALLING_AMT = #{gatMyCallingAmt,jdbcType=INTEGER},
+			</if>
+			<if test="locCalledAmt != null">
+				LOC_CALLED_AMT = #{locCalledAmt,jdbcType=INTEGER},
+			</if>
+			<if test="innerMyCalledAmt != null">
+				INNER_MY_CALLED_AMT = #{innerMyCalledAmt,jdbcType=INTEGER},
+			</if>
+			<if test="interMyCalledAmt != null">
+				INTER_MY_CALLED_AMT = #{interMyCalledAmt,jdbcType=INTEGER},
+			</if>
+			<if test="gatMyCalledAmt != null">
+				GAT_MY_CALLED_AMT = #{gatMyCalledAmt,jdbcType=INTEGER},
+			</if>
+			<if test="mmsAmt != null">
+				MMS_AMT = #{mmsAmt,jdbcType=INTEGER},
+			</if>
+		</set>
+		where RECORD_ID = #{recordId,jdbcType=INTEGER}
+		and PACKAGE_ID = #{packageId,jdbcType=VARCHAR}
+	</update>
+	<update id="updateByPrimaryKey" parameterType="com.aby.model.Bill">
+		update reBilling
+		set TOTAL_RENTAL_AMT = #{totalRentalAmt,jdbcType=INTEGER},
+		TOTAL_USE_AMT = #{totalUseAmt,jdbcType=INTEGER},
+		TOTAL_AMT = #{totalAmt,jdbcType=INTEGER},
+		VALUE_ADDED_AMT = #{valueAddedAmt,jdbcType=INTEGER},
+		CAILING_AMT = #{cailingAmt,jdbcType=INTEGER},
+		SP_SMS_AMT = #{spSmsAmt,jdbcType=INTEGER},
+		INTERNET_AMT = #{internetAmt,jdbcType=INTEGER},
+		WLAN_AMT = #{wlanAmt,jdbcType=INTEGER},
+		INNER_SEND_SMS_AMT = #{innerSendSmsAmt,jdbcType=INTEGER},
+		INTER_SEND_SMS_AMT = #{interSendSmsAmt,jdbcType=INTEGER},
+		VOICE_AMT = #{voiceAmt,jdbcType=INTEGER},
+		VOICE_CALLING_AMT = #{voiceCallingAmt,jdbcType=INTEGER},
+		VOICE_CALLED_AMT = #{voiceCalledAmt,jdbcType=INTEGER},
+		LOC_CALLING_AMT = #{locCallingAmt,jdbcType=INTEGER},
+		DDD_CALLING_AMT = #{dddCallingAmt,jdbcType=INTEGER},
+		IDD_CALLING_AMT = #{iddCallingAmt,jdbcType=INTEGER},
+		GAT_CALLING_AMT = #{gatCallingAmt,jdbcType=INTEGER},
+		INNER_MY_CALLING_AMT = #{innerMyCallingAmt,jdbcType=INTEGER},
+		INTER_MY_CALLING_AMT = #{interMyCallingAmt,jdbcType=INTEGER},
+		GAT_MY_CALLING_AMT = #{gatMyCallingAmt,jdbcType=INTEGER},
+		LOC_CALLED_AMT = #{locCalledAmt,jdbcType=INTEGER},
+		INNER_MY_CALLED_AMT = #{innerMyCalledAmt,jdbcType=INTEGER},
+		INTER_MY_CALLED_AMT = #{interMyCalledAmt,jdbcType=INTEGER},
+		GAT_MY_CALLED_AMT = #{gatMyCalledAmt,jdbcType=INTEGER},
+		MMS_AMT = #{mmsAmt,jdbcType=INTEGER}
+		where RECORD_ID = #{recordId,jdbcType=INTEGER}
+		and PACKAGE_ID = #{packageId,jdbcType=VARCHAR}
+	</update>
+</mapper>

@@ -1,6 +1,47 @@
-package com.aby.record.model;
+package com.aby.model;
 
-public class Record {
+public class Record implements Cloneable{
+	
+	public long countKB(long bytes){
+		return (long) Math.ceil(bytes / 1024.0);
+	}
+	
+	public long countMB(long bytes){
+		long kb = countKB(bytes);
+		return (long) Math.ceil(kb / 1024.0);
+	}
+	
+	public long countGB(long bytes){
+		long mb = countMB(bytes);
+		return (long) Math.ceil(mb / 1024.0);
+	}
+	
+	public static void main(String[] args) {
+		Record record = new Record();
+		record.setTotalRentalAmt(5900);
+		int dur = record.getWlanBilledDur();
+		record.setWlanAmt(dur * 3);
+		
+		long internetTotByte = record.getInternetTotBytes() - record.getWlanTotBytes(); 
+		long mb = record.countMB(internetTotByte);
+		
+		
+		
+	}
+	
+	
+	
+	@Override  
+    public Record clone() {  
+        Record record = null;  
+        try{  
+            record = (Record)super.clone();  
+        }catch(CloneNotSupportedException e) {  
+            e.printStackTrace();  
+        }  
+        return record;  
+    }  
+	
     private Integer id;
 
     private String dtaDate;
@@ -1820,4 +1861,80 @@ public class Record {
     public void setPromEndDt(String promEndDt) {
         this.promEndDt = promEndDt == null ? null : promEndDt.trim();
     }
+
+	@Override
+	public String toString() {
+		return "Record [id=" + id + ", dtaDate=" + dtaDate + ", prodSpecId=" + prodSpecId + ", integrationCd="
+				+ integrationCd + ", userId=" + userId + ", valueAddedAmt=" + valueAddedAmt + ", cailingAmt="
+				+ cailingAmt + ", cailingAmount=" + cailingAmount + ", spSmsAmt=" + spSmsAmt + ", spSmsAmount="
+				+ spSmsAmount + ", internetAmt=" + internetAmt + ", internetTotBytes=" + internetTotBytes
+				+ ", internetDur=" + internetDur + ", internetOnlineTimes=" + internetOnlineTimes
+				+ ", internetBilledDur=" + internetBilledDur + ", i1xAmt=" + i1xAmt + ", i1xTotBytes=" + i1xTotBytes
+				+ ", i1xDur=" + i1xDur + ", i1xOnlineTimes=" + i1xOnlineTimes + ", i1xBilledDur=" + i1xBilledDur
+				+ ", i1xLocAmt=" + i1xLocAmt + ", i1xLocTotBytes=" + i1xLocTotBytes + ", i1xLocDur=" + i1xLocDur
+				+ ", i1xLocOnlineTimes=" + i1xLocOnlineTimes + ", i1xLocBilledDur=" + i1xLocBilledDur + ", i1xMyAmt="
+				+ i1xMyAmt + ", i1xMyTotBytes=" + i1xMyTotBytes + ", i1xMyDur=" + i1xMyDur + ", i1xMyOnlineTimes="
+				+ i1xMyOnlineTimes + ", i1xMyBilledDur=" + i1xMyBilledDur + ", wlanAmt=" + wlanAmt + ", wlanTotBytes="
+				+ wlanTotBytes + ", wlanDur=" + wlanDur + ", wlanOnlineTimes=" + wlanOnlineTimes + ", wlanBilledDur="
+				+ wlanBilledDur + ", wlanLocAmt=" + wlanLocAmt + ", wlanLocTotBytes=" + wlanLocTotBytes
+				+ ", wlanLocDur=" + wlanLocDur + ", wlanLocOnlineTimes=" + wlanLocOnlineTimes + ", wlanLocBilledDur="
+				+ wlanLocBilledDur + ", wlanMyAmt=" + wlanMyAmt + ", wlanMyTotBytes=" + wlanMyTotBytes + ", wlanMyDur="
+				+ wlanMyDur + ", wlanMyOnlineTimes=" + wlanMyOnlineTimes + ", wlanMyBilledDur=" + wlanMyBilledDur
+				+ ", i3gAmt=" + i3gAmt + ", i3gTotBytes=" + i3gTotBytes + ", i3gDur=" + i3gDur + ", i3gOnlineTimes="
+				+ i3gOnlineTimes + ", i3gBilledDur=" + i3gBilledDur + ", i3gLocAmt=" + i3gLocAmt + ", i3gLocTotBytes="
+				+ i3gLocTotBytes + ", i3gLocDur=" + i3gLocDur + ", i3gLocOnlineTimes=" + i3gLocOnlineTimes
+				+ ", i3gLocBilledDur=" + i3gLocBilledDur + ", i3gMyAmt=" + i3gMyAmt + ", i3gMyTotBytes=" + i3gMyTotBytes
+				+ ", i3gMyDur=" + i3gMyDur + ", i3gMyOnlineTimes=" + i3gMyOnlineTimes + ", i3gMyBilledDur="
+				+ i3gMyBilledDur + ", innerSendSmsAmt=" + innerSendSmsAmt + ", innerSendSmsTimes=" + innerSendSmsTimes
+				+ ", interSendSmsAmt=" + interSendSmsAmt + ", interSendSmsTimes=" + interSendSmsTimes + ", voiceTimes="
+				+ voiceTimes + ", voiceDur=" + voiceDur + ", voiceAmt=" + voiceAmt + ", voiceBilledDur="
+				+ voiceBilledDur + ", voiceCallingTimes=" + voiceCallingTimes + ", voiceCallingDur=" + voiceCallingDur
+				+ ", voiceCallingAmt=" + voiceCallingAmt + ", voiceCallingBilledDur=" + voiceCallingBilledDur
+				+ ", voiceCalledTimes=" + voiceCalledTimes + ", voiceCalledDur=" + voiceCalledDur + ", voiceCalledAmt="
+				+ voiceCalledAmt + ", voiceCalledBilledDur=" + voiceCalledBilledDur + ", locCallingTimes="
+				+ locCallingTimes + ", locCallingDur=" + locCallingDur + ", locCallingAmt=" + locCallingAmt
+				+ ", locCallingBilledDur=" + locCallingBilledDur + ", dddCallingTimes=" + dddCallingTimes
+				+ ", dddCallingDur=" + dddCallingDur + ", dddCallingAmt=" + dddCallingAmt + ", dddCallingBilledDur="
+				+ dddCallingBilledDur + ", iddCallingTimes=" + iddCallingTimes + ", iddCallingDur=" + iddCallingDur
+				+ ", iddCallingAmt=" + iddCallingAmt + ", iddCallingBilledDur=" + iddCallingBilledDur
+				+ ", gatCallingTimes=" + gatCallingTimes + ", gatCallingDur=" + gatCallingDur + ", gatCallingAmt="
+				+ gatCallingAmt + ", gatCallingBilledDur=" + gatCallingBilledDur + ", innerMyCallingTimes="
+				+ innerMyCallingTimes + ", innerMyCallingDur=" + innerMyCallingDur + ", innerMyCallingAmt="
+				+ innerMyCallingAmt + ", innerMyCallingBilledDur=" + innerMyCallingBilledDur + ", interMyCallingTimes="
+				+ interMyCallingTimes + ", interMyCallingDur=" + interMyCallingDur + ", interMyCallingAmt="
+				+ interMyCallingAmt + ", interMyCallingBilledDur=" + interMyCallingBilledDur + ", gatMyCallingTimes="
+				+ gatMyCallingTimes + ", gatMyCallingDur=" + gatMyCallingDur + ", gatMyCallingAmt=" + gatMyCallingAmt
+				+ ", gatMyCallingBilledDur=" + gatMyCallingBilledDur + ", locCalledTimes=" + locCalledTimes
+				+ ", locCalledDur=" + locCalledDur + ", locCalledAmt=" + locCalledAmt + ", locCalledBilledDur="
+				+ locCalledBilledDur + ", innerMyCalledTimes=" + innerMyCalledTimes + ", innerMyCalledDur="
+				+ innerMyCalledDur + ", innerMyCalledAmt=" + innerMyCalledAmt + ", innerMyCalledBilledDur="
+				+ innerMyCalledBilledDur + ", interMyCalledTimes=" + interMyCalledTimes + ", interMyCalledDur="
+				+ interMyCalledDur + ", interMyCalledAmt=" + interMyCalledAmt + ", interMyCalledBilledDur="
+				+ interMyCalledBilledDur + ", gatMyCalledTimes=" + gatMyCalledTimes + ", gatMyCalledDur="
+				+ gatMyCalledDur + ", gatMyCalledAmt=" + gatMyCalledAmt + ", gatMyCalledBilledDur="
+				+ gatMyCalledBilledDur + ", prodInstCid=" + prodInstCid + ", custCid=" + custCid + ", acntCid="
+				+ acntCid + ", totalAmt=" + totalAmt + ", totalRentalAmt=" + totalRentalAmt + ", totalUseAmt="
+				+ totalUseAmt + ", itemDeviceModel=" + itemDeviceModel + ", deviceClass=" + deviceClass + ", gType="
+				+ gType + ", unitPrice=" + unitPrice + ", ifWap=" + ifWap + ", ifNet=" + ifNet + ", wapTimes="
+				+ wapTimes + ", netTimes=" + netTimes + ", wapGrossBytes=" + wapGrossBytes + ", netGrossBytes="
+				+ netGrossBytes + ", receive1x=" + receive1x + ", receive1xM=" + receive1xM + ", send1x=" + send1x
+				+ ", send1xM=" + send1xM + ", receiveEvdo=" + receiveEvdo + ", receiveEvdoM=" + receiveEvdoM
+				+ ", sendEvdo=" + sendEvdo + ", sendEvdoM=" + sendEvdoM + ", receiveWifi=" + receiveWifi
+				+ ", receiveWifiM=" + receiveWifiM + ", sendWifi=" + sendWifi + ", sendWifiM=" + sendWifiM
+				+ ", ifTysxBillFlag=" + ifTysxBillFlag + ", ifLiveFlag=" + ifLiveFlag + ", ifQq=" + ifQq + ", qqDtimes="
+				+ qqDtimes + ", mmsTimes=" + mmsTimes + ", spmmsTimes=" + spmmsTimes + ", ifSmsFlag=" + ifSmsFlag
+				+ ", timesSmsSend=" + timesSmsSend + ", if189mailActiveFlag=" + if189mailActiveFlag + ", i4gAmt="
+				+ i4gAmt + ", i4gTotBytes=" + i4gTotBytes + ", i4gDur=" + i4gDur + ", i4gOnlineTimes=" + i4gOnlineTimes
+				+ ", i4gBilledDur=" + i4gBilledDur + ", i4gLocAmt=" + i4gLocAmt + ", i4gLocTotBytes=" + i4gLocTotBytes
+				+ ", i4gLocDur=" + i4gLocDur + ", i4gLocOnlineTimes=" + i4gLocOnlineTimes + ", i4gLocBilledDur="
+				+ i4gLocBilledDur + ", i4gMyAmtIn=" + i4gMyAmtIn + ", i4gMyAmtOut=" + i4gMyAmtOut + ", i4gMyTotBytesIn="
+				+ i4gMyTotBytesIn + ", i4gMyTotBytesOut=" + i4gMyTotBytesOut + ", i4gMyDurIn=" + i4gMyDurIn
+				+ ", i4gMyDurOut=" + i4gMyDurOut + ", i4gMyOnlineTimesIn=" + i4gMyOnlineTimesIn
+				+ ", i4gMyOnlineTimesOut=" + i4gMyOnlineTimesOut + ", i4gMyBilledDurIn=" + i4gMyBilledDurIn
+				+ ", i4gMyBilledDurOut=" + i4gMyBilledDurOut + ", promNum=" + promNum + ", promName=" + promName
+				+ ", salePolicyName=" + salePolicyName + ", promStartDt=" + promStartDt + ", promEndDt=" + promEndDt
+				+ "]";
+	}
+    
+    
 }
