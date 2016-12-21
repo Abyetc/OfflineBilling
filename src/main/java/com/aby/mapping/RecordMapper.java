@@ -17,6 +17,8 @@ public interface RecordMapper {
     
     List<Record> selectByPackageNum(String packageNum);
     
+    List<String> selectAllPromName();
+    
     int updateByPrimaryKeySelective(Record record);
 
     int updateByPrimaryKey(Record record);

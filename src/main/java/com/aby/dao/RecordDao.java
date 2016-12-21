@@ -1,40 +1,53 @@
 package com.aby.dao;
 
-import org.kie.api.KieServices;
-import org.kie.api.runtime.KieContainer;
-import org.kie.api.runtime.KieSession;
 import java.io.IOException;
 import java.io.InputStream;
-import java.nio.channels.SeekableByteChannel;
+import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
-import java.util.Scanner;
 
 import org.apache.ibatis.io.Resources;
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.apache.ibatis.session.SqlSessionFactoryBuilder;
-import org.drools.compiler.lang.dsl.DSLMapParser.statement_return;
-import org.eclipse.jdt.internal.compiler.util.Sorting;
 import org.junit.Test;
+import org.kie.api.KieServices;
+import org.kie.api.runtime.KieContainer;
+import org.kie.api.runtime.KieSession;
 
 import com.aby.mapping.BillMapper;
 import com.aby.mapping.RecordMapper;
 import com.aby.model.Bill;
-import com.aby.model.BillKey;
 import com.aby.model.Record;
 
 public class RecordDao {
 
 	public static void main(String[] args) {
-		Scanner sc = new Scanner(System.in);   
-		System.out.print("Original PROM_NUM: ");
-		String originalPackageNum = sc.next();
-		System.out.println();
-		System.out.print("New PROM_NUM: ");
-		String newPackageNum = sc.next();
-		System.out.println();
-		reBilling2(originalPackageNum, newPackageNum);
+		List<String> promNames = getAllPromNames();
+//		List<String> promNames = new ArrayList<>();
+//		promNames.add("2-U33YJHZ");
+		List<String> newPromNames = new ArrayList<String>();
+		newPromNames.add("2-U33YJHZ");
+		newPromNames.add("DA_SAN_YUAN_53");
+		newPromNames.add("FEI_YONG_19");
+		
+		int i = 0;
+		for (String promName : promNames) {
+			System.out.println();
+			System.out.println(i);
+			System.out.println(promName);
+			reBilling2(promName, newPromNames);
+			i++;
+		}
+		
+//		Scanner sc = new Scanner(System.in);   
+//		System.out.print("Original PROM_NUM: ");
+//		String originalPackageNum = sc.next();
+//		System.out.println();
+//		System.out.print("New PROM_NUM: ");
+//		String newPackageNum = sc.next();
+//		System.out.println();
+//		reBilling2(originalPackageNum, newPackageNum);
 	}
 
 	private static SqlSessionFactory sqlSessionFactory;
@@ -79,34 +92,34 @@ public class RecordDao {
 	 * @param newPackageNum
 	 * @return 总共处理了多少条记录
 	 */
-	public static int reBilling(String originalPackageNum, String newPackageNum) {
-		List<Integer> list = getIDs(originalPackageNum); // 获取原先套餐的所有记录的ID
-		int size = list.size();
-		int capacity = 1000; // 每次处理1000个记录，这个数量可以修改，暂时用1000
-		int index = 0;
-		while (index < size) {
-			List<Record> records = new LinkedList<Record>();
-			for (int i = index; i < index + capacity && i < size; i++) {
-				int id = list.get(index);
-				Record record = getRecordByID(id);
-				records.add(record);
-			}
+//	public static int reBilling(String originalPackageNum, String newPackageNum) {
+//		List<Integer> list = getIDs(originalPackageNum); // 获取原先套餐的所有记录的ID
+//		int size = list.size();
+//		int capacity = 1000; // 每次处理1000个记录，这个数量可以修改，暂时用1000
+//		int index = 0;
+//		while (index < size) {
+//			List<Record> records = new LinkedList<Record>();
+//			for (int i = index; i < index + capacity && i < size; i++) {
+//				int id = list.get(index);
+//				Record record = getRecordByID(id);
+//				records.add(record);
+//			}
+//
+//			index += capacity;
+//			fireRule(records, newPackageNum);
+//			List<Bill> bills = new LinkedList<Bill>();
+//			for (Record record : records) {
+//				Bill bill = Bill.getBillFromRecord(record);
+//				bills.add(bill);
+//			}
+//			// 将得到的新数据插入到数据库中
+//			insertBillBatch(bills);
+//			System.out.println(index);
+//		}
+//		return size;
+//	}
 
-			index += capacity;
-			fireRule(records, newPackageNum);
-			List<Bill> bills = new LinkedList<Bill>();
-			for (Record record : records) {
-				Bill bill = Bill.getBillFromRecord(record);
-				bills.add(bill);
-			}
-			// 将得到的新数据插入到数据库中
-			insertBillBatch(bills);
-			System.out.println(index);
-		}
-		return size;
-	}
-
-	public static int reBilling2(String originalPackageNum, String newPackageNum) {
+	public static int reBilling2(String originalPackageNum, List<String> newPackageNums) {
 		long begin = System.currentTimeMillis();
 		List<Record> records = getRecordsByPackageNum(originalPackageNum);
 		long end = System.currentTimeMillis();
@@ -126,16 +139,18 @@ public class RecordDao {
 			for (int i = index; i < index + capacity && i < size; i++) {
 				tmpRecord.add(records.get(i));
 			}
-			fireRule(tmpRecord, newPackageNum);
 			index += capacity;
-
-			List<Bill> bills = new LinkedList<Bill>();
-			for (Record record : tmpRecord) {
-				Bill bill = Bill.getBillFromRecord(record);
-				bills.add(bill);
+			
+			for (String newPackageNum : newPackageNums) {
+				fireRule(tmpRecord, newPackageNum);
+				List<Bill> bills = new LinkedList<Bill>();
+				for (Record record : tmpRecord) {
+					Bill bill = Bill.getBillFromRecord(record);
+					bills.add(bill);
+				}
+				// 将得到的新数据插入到数据库中
+				insertBillBatch(bills);
 			}
-			// 将得到的新数据插入到数据库中
-			insertBillBatch(bills);
 		}
 		long e = System.currentTimeMillis();
 		System.out.println("Deal Time: " + (e - b) / 1000 + "s");
@@ -161,7 +176,8 @@ public class RecordDao {
 				kSession.insert(record);
 			}
 			kSession.fireAllRules();
-
+			kSession.dispose();
+			kSession.destroy();
 		} catch (Throwable t) {
 			t.printStackTrace();
 		}
@@ -169,7 +185,7 @@ public class RecordDao {
 
 	@Test
 	public void testGetStudent() throws Exception {
-		reBilling2("2-U33YJHZ", "2-U33YJHZ");
+//		reBilling2("2-U33YJHZ", "2-U33YJHZ");
 	}
 
 	public static Record getRecordByID(int id) {
@@ -207,6 +223,13 @@ public class RecordDao {
 		SqlSession session = RecordDao.getSqlSessionFactory().openSession();
 		RecordMapper mapper = session.getMapper(RecordMapper.class);
 		List<Record> list = mapper.selectByPackageNum(packageNum);
+		return list;
+	}
+	
+	public static List<String> getAllPromNames() {
+		SqlSession session = RecordDao.getSqlSessionFactory().openSession();
+		RecordMapper mapper = session.getMapper(RecordMapper.class);
+		List<String> list = mapper.selectAllPromName();
 		return list;
 	}
 }

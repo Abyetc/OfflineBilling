@@ -234,6 +234,10 @@
   	where PROM_NUM = #{PROM_NUM,jdbcType=VARCHAR}
   </select>
   
+  <select id="selectAllPromName" resultType="java.lang.String">
+  	select DISTINCT PROM_NUM  from cdma 
+  </select>
+  
   <select id="selectByPackageNum" parameterType="java.lang.String" resultMap="BaseResultMap">
   	select 
   	<include refid="Base_Column_List" />

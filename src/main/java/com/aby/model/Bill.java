@@ -276,6 +276,7 @@ public class Bill extends BillKey {
     	int calledAmt = record.getLocCalledAmt() + record.getInnerMyCalledAmt() + record.getInterMyCalledAmt() + record.getGatMyCalledAmt();
     	bill.setVoiceCalledAmt(calledAmt);
     	bill.setVoiceAmt(calledAmt + callingAmt);
+    	
     	bill.setInternetAmt(record.getInternetAmt());
     	
     	int valueAddedAmt = bill.getCailingAmt() + bill.getSpSmsAmt() + bill.getInternetAmt() + bill.getInnerSendSmsAmt() + bill.getInterSendSmsAmt() + bill.getMmsAmt();

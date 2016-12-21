@@ -1,48 +1,10 @@
 package com.process
 
 import com.aby.model.*;
+import com.util.Package;
 
-// 计算超出部分资源应该收费金额
-// freeAmount 免费量
-// unitPrice 超过部分单价
-// amount总量
-function int exceedAmount(long freeAmount, int unitPrice, long amount){
-	if(amount <= freeAmount){
-		return 0;
-	}else{
-		return (int)(amount - freeAmount) * unitPrice;
-	}
-}
 
-	function long countKB(long bytes){
-		return (long) Math.ceil(bytes / 1024.0);
-	}
-	
-	function long countMB(long bytes){
-		long kb = countKB(bytes);
-		return (long) Math.ceil(kb / 1024.0);
-	}
-	
-	function long countGB(long bytes){
-		long mb = countMB(bytes);
-		return (long) Math.ceil(mb / 1024.0);
-	}
-
-// 分阶段收费
-function int stageCharge(int total, int free, int unit, int freeBegin, int freeEnd){
-		if(total <= free){
-			return 0;
-		}
-		
-		int exceed = total - free;
-		int count = exceed / freeEnd;
-		int result = count * (unit * freeBegin);
-		result += (count % freeEnd) * unit;
-		return result;
-	}
-
-// 设置月租
-rule "TOTAL_RENTAL_AMT"
+rule "2-U33YJHZ"
 	when 
 		record : Record(promNum == "2-U33YJHZ");	// 乐享4G 59元
 	then 
@@ -51,7 +13,7 @@ rule "TOTAL_RENTAL_AMT"
 		
 		// 设置国内短信发送金额
 		int sms = record.getInnerSendSmsTimes();
-		int amount = exceedAmount(0, 10, sms);		// 10分钱一条短信
+		int amount = Package.exceedAmount(0, 10, sms);		// 10分钱一条短信
 		record.setInnerSendSmsAmt(amount);
 		
 		// 设置wlan金额
@@ -59,14 +21,16 @@ rule "TOTAL_RENTAL_AMT"
 		record.setWlanAmt(wlanAmt);				
 		
 		// 上网总金额
-		long internetTotByte = record.getInternetTotBytes() - record.getWlanTotBytes(); 
-		long mb = countMB(internetTotByte);
-		int internetAmt = stageCharge((int)mb, 500, 30, 100, 500) + wlanAmt;
+		long loc = Package.getLocalInternetAmount(record);
+		long my = Package.getMyInternetAmount(record);
+		long internetTotByte = loc + my;
+		long mb = Package.countMB(internetTotByte);
+		int internetAmt = Package.stageCharge((int)mb, 1000, 30, 100, 500) + record.getI4gMyAmtOut() + wlanAmt;
 		record.setInternetAmt(internetAmt);
 		
 		// 通话金额，乐享4G不分本地和国内通话，所以，全部算进国内通话里面
 		int callingDur = record.getLocCallingBilledDur() + record.getDddCallingBilledDur() + record.getInnerMyCallingBilledDur();
-		int callingAMT = exceedAmount(100, 15, callingDur);
+		int callingAMT = Package.exceedAmount(100, 15, callingDur);
 		record.setDddCallingAmt(callingAMT);
 		record.setLocCallingAmt(0);
 		record.setInnerMyCallingAmt(0);		
@@ -76,5 +40,84 @@ rule "TOTAL_RENTAL_AMT"
 		// 这里比较特备，设置彩信的数量为彩信的金额就可以了，程序会自动转换到金额中去
 		record.setMmsTimes(10 * record.getMmsTimes());	
 end
+
+
+rule "DA_SAN_YUAN_53"
+	when 
+		record : Record(promNum == "DA_SAN_YUAN_53");
+	then 
+		// 设置月租
+		record.setTotalRentalAmt(5300);
+		
+		// 设置国内短信发送金额
+		int sms = record.getInnerSendSmsTimes();
+		int amount = Package.exceedAmount(0, 10, sms);		// 0.1元一条短信
+		record.setInnerSendSmsAmt(amount);
+		
+		// 设置wlan金额
+		int wlanAmt = record.getWlanBilledDur() * 3;	// 0.03元一分钟
+		record.setWlanAmt(wlanAmt);				
+		
+		// 上网总金额
+		long loc = Package.getLocalInternetAmount(record);
+		long my = Package.getMyInternetAmount(record);
+		long locMB = Package.countMB(loc);
+		long myMB = Package.countMB(my);
+		long exceedLoc = Math.max(locMB - 1000, 0);	// 还有多少本地流量需要计费
+		long exceedInternet = Math.max(myMB + exceedLoc - 30, 0);		// 有多少流量需要计费
+		int internetAmt = Package.stageCharge((int)exceedInternet, 0, 30, 100, 500) + record.getI4gMyAmtOut() + wlanAmt;
+		record.setInternetAmt(internetAmt);
+		
+		// 不分本地和国内通话，所以，全部算进国内通话里面
+		int callingDur = record.getLocCallingBilledDur() + record.getDddCallingBilledDur() + record.getInnerMyCallingBilledDur();
+		int callingAMT = Package.exceedAmount(1000, 15, callingDur);	// 1000分钟免费通话
+		record.setDddCallingAmt(callingAMT);
+		record.setLocCallingAmt(0);
+		record.setInnerMyCallingAmt(0);		
+		record.setLocCalledAmt(0);
+		record.setInnerMyCalledAmt(0);
+		
+		// 这里比较特备，设置彩信的数量为彩信的金额就可以了，程序会自动转换到金额中去
+		record.setMmsTimes(10 * record.getMmsTimes());		// 0.1元一条彩信	
+end
+
+
+rule "FEI_YONG_19"
+	when 
+		record : Record(promNum == "FEI_YONG_19");	// 乐享4G 59元
+	then 
+		// 设置月租
+		record.setTotalRentalAmt(1900);
+		
+		// 设置国内短信发送金额
+		int sms = record.getInnerSendSmsTimes();
+		int amount = Package.exceedAmount(0, 8, sms);		// 0.08元一条短信
+		record.setInnerSendSmsAmt(amount);
+		
+		// 设置wlan金额
+		int wlanAmt = record.getWlanBilledDur() * 3;	// 0.03元一分钟
+		record.setWlanAmt(wlanAmt);				
+		
+		// 上网总金额
+		long loc = Package.getLocalInternetAmount(record);
+		long my = Package.getMyInternetAmount(record);
+		long locMB = Package.countMB(loc);
+		long myMB = Package.countMB(my);
+		int internetAmt = Package.exceedAmount(1024, 8, locMB) + Package.exceedAmount(0, 15, myMB) + record.getI4gMyAmtOut() + wlanAmt; 
+		record.setInternetAmt(internetAmt);
+		
+		// 语音通话
+		int locCallingDur = record.getLocCallingBilledDur() + record.getDddCallingBilledDur();
+		int myCallingDur = record.getInnerMyCallingBilledDur();
+		record.setDddCallingAmt(Package.exceedAmount(190, 8, locCallingDur));
+		record.setLocCallingAmt(0);
+		record.setInnerMyCallingAmt(Package.exceedAmount(0, 15, myCallingDur));		
+		record.setLocCalledAmt(0);
+		record.setInnerMyCalledAmt(0);
+		
+		// 这里比较特备，设置彩信的数量为彩信的金额就可以了，程序会自动转换到金额中去
+		record.setMmsTimes(8 * record.getMmsTimes());		// 0.08元一条彩信	
+end
+
 
 	
